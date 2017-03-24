@@ -1,0 +1,77 @@
+body {
+  font-family: Open Sans; }
+  body #landing {
+    height: 700px;
+    position: relative; }
+    body #landing:before {
+      content: "";
+      padding-top: 100px;
+      transform: skewY(4deg);
+      height: 100%;
+      box-sizing: border-box;
+      position: absolute;
+      top: -100px;
+      background: #fed53d;
+      height: 100%;
+      width: 100%;
+      transform: skewY(-4deg); }
+    body #landing #textContainer {
+      text-transform: uppercase;
+      margin-left: 40px;
+      font-family: Neue Helvetica Condensed;
+      font-weight: 100;
+      position: relative; }
+      body #landing #textContainer div {
+        background: #fff;
+        font-size: 100px;
+        padding: 0 10px;
+        display: inline-block; }
+        body #landing #textContainer div:first-child {
+          margin-bottom: 15px; }
+    body #landing #pictureContainer {
+      margin-right: 100px;
+      position: relative; }
+      body #landing #pictureContainer .box {
+        padding: 20px;
+        width: 200px;
+        height: 200px;
+        position: relative; }
+        body #landing #pictureContainer .box:before {
+          content: "";
+          display: block;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          border: 1px solid #fff;
+          transform: rotate(45deg); }
+        body #landing #pictureContainer .box:first-child {
+          margin-right: 100px; }
+        body #landing #pictureContainer .box .number {
+          font-size: 47px;
+          font-weight: 700;
+          border-bottom: 2px solid;
+          margin-bottom: 8px;
+          height: 66px; }
+        body #landing #pictureContainer .box .description {
+          font-family: Neue Helvetica Condensed;
+          font-weight: 100;
+          font-size: 25px; }
+      body #landing #pictureContainer .bigBox {
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        z-index: 7;
+        transform: rotate(45deg);
+        overflow: hidden;
+        top: 90%;
+        left: 15.2%; }
+        body #landing #pictureContainer .bigBox #image {
+          background: url(../images/graduation.jpg);
+          transform: rotate(-45deg);
+          width: 500px;
+          height: 500px;
+          margin: -75px 0 0 -75px; }
+
+/*# sourceMappingURL=degree.css.map */
