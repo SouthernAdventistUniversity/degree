@@ -1,0 +1,131 @@
+.xs
+    font-family: Open Sans
+    
+    #landing
+        height: 237px
+        position: relative
+        padding: 53px 8vw
+        background: #fed53d
+
+        #textContainer
+            text-transform: uppercase
+            font-family: Neue Helvetica Condensed
+            font-weight: 100
+            position: relative
+
+            div
+                background: #fff
+                font-size: 47px
+                padding: 0 10px
+                display: inline-block
+
+                &:first-child
+                    margin-bottom: 7px
+
+        #pictureContainer
+            width: 100%
+            position: relative
+            margin-top: 20px
+
+            .box
+                $width: 150px
+                width: $width
+                height: $width
+                position: relative
+
+                &:before
+                    content: ''
+                    display: block
+                    position: absolute
+                    left: 0
+                    top: 0
+                    width: 100%
+                    height: 100%
+                    border: 1px solid #fff
+
+                &:first-child
+                    margin-right: 0
+
+                .number
+                    font-size: 36px
+                    font-weight: 700
+                    border-bottom: 2px solid
+                    margin-bottom: 8px
+                    height: 53px
+
+                .description
+                    font-family: Neue Helvetica Condensed
+                    font-weight: 100
+                    font-size: 20px
+
+    #mainContainer
+        margin-top: 52px
+
+        #finder
+            height: 100%
+            padding: 0 8vw
+
+            #titleContainer
+                text-transform: uppercase
+                font-size: 40px
+                font-family: Neue Helvetica
+                font-weight: 300
+
+                #title
+                    font-weight: 900
+
+            #text
+                line-height: 1.8
+                margin: 28px 0 20px
+
+            degree-finder
+                width: 100%
+
+                #selectContainer
+                    margin: 20px 0 40px
+
+                    .filter
+                        
+
+                        .label
+                            text-transform: uppercase
+                            font-weight: 700
+                            font-size: 21px
+
+                        md-select
+                            background: rgb(206,215,37)
+                            padding: 14px 9px
+                            
+                            md-select-value
+                                color: #fff
+                                text-transform: uppercase
+                                font-weight: 700
+                                font-size: 15px
+
+                                .md-select-icon
+                                    color: #fff
+
+            md-list
+
+                md-list-item
+                    border-top: 2px solid rgb(220,220,220)
+                    padding: 27px 0
+                    
+                    &:last-child
+                        border-bottom: 2px solid rgb(220,220,220)
+
+                    #degree_title
+                        font-weight: 600
+                        font-size: 20px
+
+                    #degree_school
+                        font-size: 14px
+                        font-family: Sorts Mill Goudy
+        
+        #request
+            background: rgb(237,237,237)
+            width: 100%
+            height: 475px
+            margin-top: 40px
+
+        

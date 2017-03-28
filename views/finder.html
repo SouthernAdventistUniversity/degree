@@ -1,0 +1,25 @@
+<div id="selectContainer" layout="row" layout-align="space-between center">
+    <div class="filter" flex="40">
+        <span class="label">Program Level</span>
+        <md-select class="md-no-underline" ng-model="user.level" placeholder="{{user.level}}" aria-label="Program Level">
+            <md-option ng-value="' '">All Programs</md-option>
+            <md-option ng-repeat="level in levels">{{level}}</md-option>
+        </md-select>
+    </div>
+    <div class="filter" flex="40">
+        <span class="label">Area of Study</span>
+        <md-select class="md-no-underline" ng-model="user.college" placeholder="{{user.college}}" aria-label="Program Level">
+            <md-option ng-value="' '">All Schools</md-option>
+            <md-option ng-repeat="school in schools">{{school}}</md-option>
+        </md-select>
+    </div>
+</div>
+
+<md-list>
+    <md-list-item ng-repeat="degree in degrees | filter: degreeFilter | limitTo: 10" layout="row" layout-align="start center" layout-wrap>
+        <div layout="column">
+            <div id="degree_title">{{degree.degree}}</div>
+            <div id="degree_school">{{degree.school}}</div>
+        </div>
+    </md-list-item>
+</md-list>

@@ -3,44 +3,76 @@
 
 <head>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="//southern.edu/_resources-v2/css/fonts-neue.css" />
     <link rel="stylesheet" href="//southern.edu/_resources-v2/css/fonts-neue-cond.css" />
+    <link href="https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy:400,400i" rel="stylesheet">
     <link rel="stylesheet" href="./node_modules/angular-material/angular-material.css">
-    <link rel="stylesheet" href="./css/degree.css" />
+    <link rel="stylesheet" href="./css/large/degree.css" />
+    <link rel="stylesheet" href="./css/medium/degree.css" />
+    <link rel="stylesheet" href="./css/small/degree.css" />
+    <link rel="stylesheet" href="./css/x-small/degree.css" />
 </head>
 
-<body ng-app="SouthernDegree" ng-cloak>
+<body>
+
+    <div ng-app="SouthernDegree" ng-controller="AppController" ng-class="{xs:xs,sm:sm,md:md,lg:lg}" ng-cloak>
+        <div id="landing" layout="row" layout-align="space-between start" layout-wrap>
+            <div id="textContainer" flex-xs="100">
+                <div>Something</div><br>
+                <div>For Everyone</div>
+            </div>
+            <div id="pictureContainer" ng-if="!xs && !sm" layout="row" layout-align="space-between center">
+                <div class="box" layout="column" layout-align="center center">
+                    <div class="number">100+</div>
+                    <div class="description">Programs of Study</div>
+                </div>
+                <div class="box" layout="column" layout-align="center center">
+                    <div class="number">23</div>
+                    <div class="description">Academic Areas</div>
+                </div>
+                <div class="bigBox">
+                    <div id="image"></div>
+                </div>
+            </div>
+        </div>
 
 
-    <div id="landing" layout="row" layout-align="space-between center">
-        <div id="textContainer">
-            <div>Something</div><br>
-            <div>For Everyone</div>
+        <div id="mainContainer" layout="row" layout-align="center center" layout-wrap>
+            <div id="finder" flex layout="column" layout-align="start start" flex-xs="100">
+                <div id="titleContainer">
+                    <span id="title">Explore</span>
+                    <span id="sub_title">The Possibilities</span>
+                </div>
+                <div id="text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </div>
+
+                <degree-finder></degree-finder>
+            </div>
+            <div id="request" flex-xs="100">
+
+            </div>
         </div>
-        <div id="pictureContainer" layout="row" layout-align="space-between center">
-            <div class="box" layout="column" layout-align="center center">
-                <div class="number">100+</div>
-                <div class="description">Programs of Study</div>
-            </div>
-            <div class="box" layout="column" layout-align="center center">
-                <div class="number">23</div>
-                <div class="description">Academic Areas</div>
-            </div>
-            <div class="bigBox">
-                <div id="image"></div>
-            </div>
-        </div>
+
+
+
+        <!-- Angular -->
+        <script src="./node_modules/angular/angular.js"></script>
+        <script src="./node_modules/angular-aria/angular-aria.js"></script>
+        <script src="./node_modules/angular-animate/angular-animate.js"></script>
+        <script src="./node_modules/angular-material/angular-material.js"></script>
+
+        <!-- Module -->
+        <script src="./js/app.module.js"></script>
+
+        <!-- Controller -->
+        <script src="./js/app.controller.js"></script>
+
+        <!-- Component -->
+        <script src="./js/finderComponent.js"></script>
+
     </div>
-
-
-
-    <!-- Angular -->
-    <script src="./node_modules/angular/angular.js"></script>
-    <script src="./node_modules/angular-aria/angular-aria.js"></script>
-    <script src="./node_modules/angular-animate/angular-animate.js"></script>
-    <script src="./node_modules/angular-material/angular-material.js"></script>
-
-    <!-- Module -->
-    <script src="./js/app.module.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,129 @@
+* {
+  transition: 0.6s all ease-out; }
+
+.lg {
+  font-family: Open Sans; }
+  .lg #landing {
+    height: 700px;
+    position: relative;
+    padding-top: 155px; }
+    .lg #landing:before {
+      content: "";
+      padding-top: 100px;
+      height: 100%;
+      box-sizing: border-box;
+      position: absolute;
+      top: -100px;
+      background: #fed53d;
+      height: 100%;
+      width: 100%;
+      transform: skewY(-4deg); }
+    .lg #landing #textContainer {
+      text-transform: uppercase;
+      margin-left: 40px;
+      font-family: Neue Helvetica Condensed;
+      font-weight: 100;
+      position: relative; }
+      .lg #landing #textContainer div {
+        background: #fff;
+        font-size: 100px;
+        padding: 0 10px;
+        display: inline-block; }
+        .lg #landing #textContainer div:first-child {
+          margin-bottom: 15px; }
+    .lg #landing #pictureContainer {
+      margin-right: 100px;
+      position: relative; }
+      .lg #landing #pictureContainer .box {
+        padding: 20px;
+        width: 200px;
+        height: 200px;
+        position: relative; }
+        .lg #landing #pictureContainer .box:before {
+          content: "";
+          display: block;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          border: 1px solid #fff;
+          transform: rotate(45deg); }
+        .lg #landing #pictureContainer .box:first-child {
+          margin-right: 100px; }
+        .lg #landing #pictureContainer .box .number {
+          font-size: 47px;
+          font-weight: 700;
+          border-bottom: 2px solid;
+          margin-bottom: 8px;
+          height: 66px; }
+        .lg #landing #pictureContainer .box .description {
+          font-family: Neue Helvetica Condensed;
+          font-weight: 100;
+          font-size: 25px; }
+      .lg #landing #pictureContainer .bigBox {
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        z-index: 7;
+        transform: rotate(45deg);
+        overflow: hidden;
+        top: 90%;
+        left: 15.2%; }
+        .lg #landing #pictureContainer .bigBox #image {
+          background: url(../../images/graduation.jpg);
+          transform: rotate(-45deg);
+          width: 500px;
+          height: 500px;
+          margin: -75px 0 0 -75px; }
+  .lg #mainContainer {
+    height: 950px;
+    margin-top: 88px; }
+    .lg #mainContainer #finder {
+      height: 100%;
+      padding: 0 8vw; }
+      .lg #mainContainer #finder #titleContainer {
+        text-transform: uppercase;
+        font-size: 40px;
+        font-family: Neue Helvetica;
+        font-weight: 300; }
+        .lg #mainContainer #finder #titleContainer #title {
+          font-weight: 900; }
+      .lg #mainContainer #finder #text {
+        line-height: 1.8;
+        margin: 28px 0 20px; }
+      .lg #mainContainer #finder degree-finder {
+        width: 100%; }
+        .lg #mainContainer #finder degree-finder #selectContainer {
+          margin: 20px 0 40px; }
+          .lg #mainContainer #finder degree-finder #selectContainer .filter .label {
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 21px; }
+          .lg #mainContainer #finder degree-finder #selectContainer .filter md-select {
+            background: #ced725;
+            padding: 14px 9px; }
+            .lg #mainContainer #finder degree-finder #selectContainer .filter md-select md-select-value {
+              color: #fff;
+              text-transform: uppercase;
+              font-weight: 700;
+              font-size: 15px; }
+              .lg #mainContainer #finder degree-finder #selectContainer .filter md-select md-select-value .md-select-icon {
+                color: #fff; }
+      .lg #mainContainer #finder md-list md-list-item {
+        border-top: 2px solid gainsboro;
+        padding: 27px 0; }
+        .lg #mainContainer #finder md-list md-list-item:last-child {
+          border-bottom: 2px solid gainsboro; }
+        .lg #mainContainer #finder md-list md-list-item #degree_title {
+          font-weight: 600;
+          font-size: 20px; }
+        .lg #mainContainer #finder md-list md-list-item #degree_school {
+          font-size: 14px;
+          font-family: Sorts Mill Goudy; }
+    .lg #mainContainer #request {
+      background: #ededed;
+      width: 320px;
+      height: 475px; }
+
+/*# sourceMappingURL=degree.css.map */

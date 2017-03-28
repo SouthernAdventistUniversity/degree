@@ -1,14 +1,17 @@
-body
+*
+    transition: .6s all ease-out
+
+.lg
     font-family: Open Sans
     
     #landing
         height: 700px
         position: relative
+        padding-top: 155px
 
         &:before
             content: ''
             padding-top: 100px
-            transform: skewY(4deg)
             height: 100%
             box-sizing: border-box
             position: absolute
@@ -82,8 +85,80 @@ body
                 left: 15.2%
 
                 #image
-                    background: url(../images/graduation.jpg)
+                    background: url(../../images/graduation.jpg)
                     transform: rotate(-45deg)
                     width: 500px
                     height: 500px
                     margin: -75px 0 0 -75px
+
+    #mainContainer
+        height: 950px
+        margin-top: 88px
+
+        #finder
+            height: 100%
+            padding: 0 8vw
+
+            #titleContainer
+                text-transform: uppercase
+                font-size: 40px
+                font-family: Neue Helvetica
+                font-weight: 300
+
+                #title
+                    font-weight: 900
+
+            #text
+                line-height: 1.8
+                margin: 28px 0 20px
+
+            degree-finder
+                width: 100%
+
+                #selectContainer
+                    margin: 20px 0 40px
+
+                    .filter
+                        
+
+                        .label
+                            text-transform: uppercase
+                            font-weight: 700
+                            font-size: 21px
+
+                        md-select
+                            background: rgb(206,215,37)
+                            padding: 14px 9px
+                            
+                            md-select-value
+                                color: #fff
+                                text-transform: uppercase
+                                font-weight: 700
+                                font-size: 15px
+
+                                .md-select-icon
+                                    color: #fff
+
+            md-list
+
+                md-list-item
+                    border-top: 2px solid rgb(220,220,220)
+                    padding: 27px 0
+                    
+                    &:last-child
+                        border-bottom: 2px solid rgb(220,220,220)
+
+                    #degree_title
+                        font-weight: 600
+                        font-size: 20px
+
+                    #degree_school
+                        font-size: 14px
+                        font-family: Sorts Mill Goudy
+        
+        #request
+            background: rgb(237,237,237)
+            width: 320px
+            height: 475px
+
+        
