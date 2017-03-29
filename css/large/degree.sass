@@ -1,6 +1,3 @@
-*
-    transition: .6s all ease-out
-
 .lg
     font-family: Open Sans
     
@@ -155,6 +152,38 @@
                     #degree_school
                         font-size: 14px
                         font-family: Sorts Mill Goudy
+
+            #pages
+                text-align: center
+                margin-top: 40px
+                padding-bottom: 100px
+                user-select: none
+
+                span 
+                    padding: 17px
+                    border-top: 1px solid rgb(236,236,236)
+                    border-bottom: 1px solid rgb(236,236,236)
+                    font-size: 15px
+                    font-weight: 600
+                    cursor: pointer
+                    outline: none
+
+                    &:first-child
+                        border-left: 1px solid rgb(236,236,236)
+                        
+                    &:last-child
+                        border-right: 1px solid rgb(236,236,236)
+
+                    &.active
+                        background: rgb(206,215,37)
+                        color: #fff
+
+                div
+                    display: inline-block
+                    padding: 16px 30px
+                    border: 1px solid rgb(236,236,236)
+                    margin: 0 25px
+                    outline: none
         
         #request
             background: rgb(237,237,237)

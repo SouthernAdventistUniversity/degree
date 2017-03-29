@@ -1,25 +1,33 @@
 <div id="selectContainer" layout="row" layout-align="space-between center">
     <div class="filter" flex="40">
         <span class="label">Program Level</span>
-        <md-select class="md-no-underline" ng-model="user.level" placeholder="{{user.level}}" aria-label="Program Level">
-            <md-option ng-value="' '">All Programs</md-option>
+        <md-select class="md-no-underline" multiple ng-model="user.level" ng-change="user.page = 0" md-selected-text="{{user.level}}" aria-label="Program Level">
+            <md-option ng-value="'All Programs'">All Programs</md-option>
             <md-option ng-repeat="level in levels">{{level}}</md-option>
         </md-select>
     </div>
     <div class="filter" flex="40">
         <span class="label">Area of Study</span>
-        <md-select class="md-no-underline" ng-model="user.college" placeholder="{{user.college}}" aria-label="Program Level">
-            <md-option ng-value="' '">All Schools</md-option>
+        <md-select class="md-no-underline" multiple ng-model="user.college" ng-change="user.page = 0" md-selected-text="{{user.college}}" aria-label="Program Level">
+            <md-option ng-value="'All Schools'">All Schools</md-option>
             <md-option ng-repeat="school in schools">{{school}}</md-option>
         </md-select>
     </div>
 </div>
 
 <md-list>
-    <md-list-item ng-repeat="degree in degrees | filter: degreeFilter | limitTo: 10" layout="row" layout-align="start center" layout-wrap>
+    <md-list-item ng-repeat="degree in filtered = (degrees | filter: degreeFilter) | limitTo: 10 : user.page * 10" layout="row" layout-align="start center" layout-wrap>
         <div layout="column">
             <div id="degree_title">{{degree.degree}}</div>
             <div id="degree_school">{{degree.school}}</div>
         </div>
     </md-list-item>
+
+
 </md-list>
+
+<div id="pages">
+    <div class="prev" ng-if="user.page" ng-click="user.page = user.page-1">Previous</div>
+    <span ng-repeat="i in getArray(filtered.length) | limitTo: 5:(user.page >= 5 ? maxPages - 5  : user.page)" ng-click="user.page = i" ng-class="{active:user.page == i}">{{i+1}}</span>
+    <div class="next" ng-if="user.page != maxPages-1" ng-click="user.page = user.page+1">Next</div>
+</div>

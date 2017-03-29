@@ -21,7 +21,7 @@
         $scope.$watch(function() { return $mdMedia('md'); }, function(e) {
             $scope.md = e;
         });
-        $scope.$watch(function() { return $mdMedia('lg'); }, function(e) {
+        $scope.$watch(function() { return $mdMedia('lg') || $mdMedia('gt-lg') }, function(e) {
             $scope.lg = e;
         });
     }

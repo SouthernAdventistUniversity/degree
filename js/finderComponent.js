@@ -15,19 +15,26 @@
 
 
         $scope.user = {
-            level: " ",
-            college: " "
+            level: ["All Programs"],
+            college: ["All Schools"],
+            page: 0
         }
 
         $scope.levels = ['Non-Degree', 'Certificate', 'Minor', 'Associate', 'Bachelor', 'Master'];
 
-        console.log($scope);
-
         ////////////////
 
-        $scope.$watch('filtered', function(e) {
-            console.log(e);
-        })
+        $scope.getArray = function(num) {
+            if (num) {
+                var numArray = [];
+                num = Math.ceil(num / 10);
+                for (var i = 0; i < num; i++) {
+                    numArray.push(i);
+                }
+                $scope.maxPages = num;
+                return numArray
+            }
+        }
 
         $http.get('//staging.southern.edu/departments').then(function(e) {
             var data = e.data;
@@ -38,12 +45,21 @@
             })
             $scope.schools = schools;
             $scope.degrees = data;
-            console.log(data, $scope.schools);
         });
 
         $scope.degreeFilter = function(degrees) {
             try {
-                return (degrees.level.indexOf($scope.user.level) > -1) && (degrees.school.indexOf($scope.user.college) > -1)
+                var check = false
+                $scope.user.level.forEach(function(level) {
+                    if (degrees.level.indexOf(level) > -1 || level == "All Programs") {
+                        $scope.user.college.forEach(function(college) {
+                            if (degrees.school.indexOf(college) > -1 || college == "All Schools") {
+                                check = true;
+                            }
+                        })
+                    }
+                })
+                return check;
             } catch (e) {}
         }
     }
