@@ -5,10 +5,12 @@
         .module('SouthernDegree')
         .controller('AppController', AppController);
 
-    AppController.$inject = ['$scope', '$mdMedia'];
+    AppController.$inject = ['$scope', '$mdMedia', 'app'];
 
-    function AppController($scope, $mdMedia) {
+    function AppController($scope, $mdMedia, app) {
         var vm = this;
+
+        $scope.app = app;
 
         ////////////////
 

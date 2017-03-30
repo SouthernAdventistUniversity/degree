@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('SouthernDegree', [
-        'ngMaterial'
+        'ngMaterial',
+        'ngAnimate'
     ]);
 })();

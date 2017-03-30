@@ -1,0 +1,19 @@
+body
+    &.hasBackdrop
+        overflow: hidden
+
+
+        
+
+    .animate-fade
+        &.ng-enter
+            transition: .3s ease-out
+            opacity: 0
+            &.ng-enter-active
+                opacity: 1
+
+        &.ng-leave
+            transition: .3s ease-out
+            opacity: 1
+            &.ng-leave-active
+                opacity: 0       

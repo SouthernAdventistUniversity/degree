@@ -1,0 +1,14 @@
+body.hasBackdrop {
+  overflow: hidden; }
+body .animate-fade.ng-enter {
+  transition: 0.3s ease-out;
+  opacity: 0; }
+  body .animate-fade.ng-enter.ng-enter-active {
+    opacity: 1; }
+body .animate-fade.ng-leave {
+  transition: 0.3s ease-out;
+  opacity: 1; }
+  body .animate-fade.ng-leave.ng-leave-active {
+    opacity: 0; }
+
+/*# sourceMappingURL=global.css.map */

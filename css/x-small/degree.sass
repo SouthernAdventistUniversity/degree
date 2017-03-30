@@ -109,7 +109,6 @@
 
                 md-list-item
                     border-top: 2px solid rgb(220,220,220)
-                    padding: 27px 0
                     
                     &:last-child
                         border-bottom: 2px solid rgb(220,220,220)
@@ -122,6 +121,25 @@
                         font-size: 14px
                         font-family: Sorts Mill Goudy
 
+                    div.md-button
+                        padding: 27px 0
+
+                        &:hover
+                            &:after 
+                                content: ''
+                                display: inline-block
+                                background: rgb(236,236,236)
+                                width: 20px
+                                height: 20px
+                                margin-right: 10px
+                                border-radius: 50%
+
+                        .md-ripple-container
+                            display: none
+
+                    .md-button
+                        background-color: transparent
+
             #pages
                 text-align: center
                 margin-top: 40px
@@ -130,18 +148,18 @@
 
                 span 
                     padding: 17px
-                    border-top: 1px solid rgb(236,236,236)
-                    border-bottom: 1px solid rgb(236,236,236)
+                    border-top: 2px solid rgb(236,236,236)
+                    border-bottom: 2px solid rgb(236,236,236)
                     font-size: 15px
                     font-weight: 600
                     cursor: pointer
                     outline: none
 
-                    &:first-child
-                        border-left: 1px solid rgb(236,236,236)
+                    &.first
+                        border-left: 2px solid rgb(236,236,236)
                         
-                    &:last-child
-                        border-right: 1px solid rgb(236,236,236)
+                    &.last
+                        border-right: 2px solid rgb(236,236,236)
 
                     &.active
                         background: rgb(206,215,37)
@@ -150,9 +168,15 @@
                 div
                     display: inline-block
                     padding: 16px 30px
-                    border: 1px solid rgb(236,236,236)
+                    border: 2px solid rgb(236,236,236)
                     margin: 0 25px
                     outline: none
+                    cursor: pointer
+
+                    &[disabled=disabled]
+                        color: rgb(236,236,236)
+                        pointer-events: none
+                        border: none
         
         #request
             background: rgb(237,237,237)

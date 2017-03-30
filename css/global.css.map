@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACI,gBAAa;EACT,QAAQ,EAAE,MAAM;AAMhB,2BAAU;EACN,UAAU,EAAE,aAAY;EACxB,OAAO,EAAE,CAAC;EACV,2CAAiB;IACb,OAAO,EAAE,CAAC;AAElB,2BAAU;EACN,UAAU,EAAE,aAAY;EACxB,OAAO,EAAE,CAAC;EACV,2CAAiB;IACb,OAAO,EAAE,CAAC",
+"sources": ["global.sass"],
+"names": [],
+"file": "global.css"
+}

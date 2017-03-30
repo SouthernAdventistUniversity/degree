@@ -5,14 +5,15 @@
         .module('SouthernDegree')
         .component('degreeFinder', {
             templateUrl: './views/finder.html',
-            controller: FinderController,
+            controller: FinderController
         });
 
-    FinderController.$inject = ['$scope', '$http'];
+    FinderController.$inject = ['$scope', '$http', 'app'];
 
-    function FinderController($scope, $http) {
+    function FinderController($scope, $http, app) {
         var $ctrl = this;
 
+        $scope.app = app;
 
         $scope.user = {
             level: ["All Programs"],
@@ -34,6 +35,19 @@
                 $scope.maxPages = num;
                 return numArray
             }
+        }
+
+        $scope.getCourseInfo = function(id, cat_id) {
+            app.hasBackdrop = true
+            $http.get('//staging.southern.edu/content?id=' + id + '&catId=' + cat_id).then(function(e) {
+                console.log(e.data);
+                var data = e.data
+                $scope.course = {
+                    name: data.name,
+                    courses: cat_id == 14 ? data.cores[0].courses : data.cores[0].children[0].courses
+                }
+                console.log($scope.course)
+            })
         }
 
         $http.get('//staging.southern.edu/departments').then(function(e) {
