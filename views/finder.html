@@ -56,6 +56,13 @@
         </div>
         <div id="professorContainer">
             <div class="title">Faculty</div>
+            <div class="deanHolder" layout="row" ng-repeat="member in staff">
+                <img ng-src="{{member.PictureLink}}" />
+                <div layout="column">
+                    <div id="deanName">{{member.PreferredName}}</div>
+                    <div id="deanPosition">{{member.PositionTitle}}</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

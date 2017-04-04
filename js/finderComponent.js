@@ -13,7 +13,7 @@
 
     FinderController.$inject = ['$scope', '$http', 'app'];
 
-    function FinderController($scope, $http, app, bindings) {
+    function FinderController($scope, $http, app) {
         var $ctrl = this;
         console.log($scope, this);
 
@@ -46,14 +46,29 @@
             $http.get('//staging.southern.edu/content?id=' + id + '&catId=' + cat_id).then(function(e) {
                 console.log(e.data);
                 var data = e.data
+                var description = data.parents[0].description.replace(/<(?:.|\n)*?>/gm, '').split('\n')
+                var chair = [description[0].split(': ')[1]]
+                var faculty = description[1].split(': ')[1].split(', ');
+                var staff = chair.concat(faculty)
+                console.log(staff)
                 $scope.course = {
                     name: data.name,
+                    parent_name: data.parents[0].name,
                     required: {
                         name: data.cores[0].name,
                         courses: cat_id == 14 ? data.cores[0].courses : data.cores[0].children[0].courses
                     }
                 }
-                console.log($scope.course)
+
+                $scope.staff = []
+                faculty.forEach(function(member) {
+                    $http.get('http://www.southern.edu/api/people-search/?' + member).then(function(e) {
+                        $scope.staff.push(e.data[0]);
+                    });
+                })
+
+
+                console.log($scope.staff)
             })
         }
 
