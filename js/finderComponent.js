@@ -46,9 +46,15 @@
             $http.get('//staging.southern.edu/content?id=' + id + '&catId=' + cat_id).then(function(e) {
                 console.log(e.data);
                 var data = e.data
-                var description = data.parents[0].description.replace(/<(?:.|\n)*?>/gm, '').split('\n')
-                var chair = [description[0].split(': ')[1]]
-                var faculty = description[1].split(': ')[1].split(', ');
+                var description = data.parents[0].description.replace(/<(?:.|\r\n)*?>/gm, '').split('\n')
+
+                var short = []
+                description.forEach(function(line) {
+                    if (line.length > 1)
+                        short.push(line);
+                })
+                var chair = [short[0].split(': ')[1]]
+                var faculty = short[1].split(': ')[1].split(', ');
                 var staff = chair.concat(faculty)
                 console.log(staff)
                 $scope.course = {
@@ -63,7 +69,8 @@
                 $scope.staff = []
                 faculty.forEach(function(member) {
                     $http.get('http://www.southern.edu/api/people-search/?' + member).then(function(e) {
-                        $scope.staff.push(e.data[0]);
+                        if (e.data[0])
+                            $scope.staff.push(e.data[0]);
                     });
                 })
 
