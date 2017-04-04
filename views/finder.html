@@ -27,18 +27,35 @@
 </md-list>
 
 <div id="pages">
-    <div class="prev" ng-if="filtered.length" ng-disabled="!user.page" ng-click="user.page = user.page-1">Previous</div>
-    <span ng-repeat="i in getArray(filtered.length) | limitTo: 5:(user.page >= 5 ? maxPages - 5  : user.page)" ng-click="user.page = i" ng-class="{active:user.page == i, first:$first, last:$last}">{{i+1}}</span>
-    <div class="next" ng-if="filtered.length" ng-disabled="user.page == maxPages-1" ng-click="user.page = user.page+1">Next</div>
     <div id="emptyResults" ng-if="!filtered.length && user.level.length && user.college.length">No results to display.</div>
     <div id="emptyFields" ng-if="!filtered.length && !user.level.length">Please select a <b>Program Level</b></div>
     <div id="emptyFields" ng-if="!filtered.length && !user.college.length">Please select an <b>Area of Study</b></div>
+    <div class="prev" ng-if="filtered.length" ng-disabled="!user.page" ng-click="user.page = user.page-1">{{$ctrl.size == 'xs' ? '&#10094' : 'Previous'}}</div>
+    <span ng-repeat="i in getArray(filtered.length) | limitTo: 5:(user.page >= 5 ? maxPages - 5  : user.page)" ng-click="user.page = i" ng-class="{active:user.page == i, first:$first, last:$last}">{{i+1}}</span>
+    <div class="next" ng-if="filtered.length" ng-disabled="user.page == maxPages-1" ng-click="user.page = user.page+1">{{$ctrl.size == 'xs' ? '&#10095' : 'Next'}}</div>
 </div>
 
 
+<!-- Course Click -->
+
 <div id="backdropContainer" ng-if="app.hasBackdrop" class="animate-fade">
-    <div id="backdrop">
-        <div id="name">{{course.name}}</div>
-        <div id="courses" ng-repeat="course in course.courses">{{course.title}}</div>
+    <div id="backdrop" layout="row" layout-wrap>
+        <div id="top" layout="row" layout-align="space-between center" flex="100">
+            <ng-letter-avatar data="{{course.name}}" charCount="1" dynamic="true" width="50" height="50"></ng-letter-avatar>
+            <div id="name" flex>{{course.name}}</div>
+            <div id="close" ng-click="app.hasBackdrop = false">x</div>
+        </div>
+        <md-list id="courseContainer">
+            <div class="title">{{course.required.name}}</div>
+            <md-list-item class="courses" ng-repeat="course in course.required.courses | orderBy: 'title'">
+                {{course.title}}
+            </md-list-item>
+        </md-list>
+        <div id="statsContainer" flex>
+            <div class="title">Stats</div>
+        </div>
+        <div id="professorContainer">
+            <div class="title">Faculty</div>
+        </div>
     </div>
 </div>

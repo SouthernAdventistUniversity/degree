@@ -6,7 +6,6 @@ body .animate-fade.ng-enter {
   body .animate-fade.ng-enter.ng-enter-active {
     opacity: 1; }
 body .animate-fade.ng-leave {
-  transition: 0.3s ease-out;
   opacity: 1; }
   body .animate-fade.ng-leave.ng-leave-active {
     opacity: 0; }

@@ -3,6 +3,7 @@
 
     angular.module('SouthernDegree', [
         'ngMaterial',
-        'ngAnimate'
+        'ngAnimate',
+        'ngLetterAvatar'
     ]);
 })();

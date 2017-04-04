@@ -5,13 +5,17 @@
         .module('SouthernDegree')
         .component('degreeFinder', {
             templateUrl: './views/finder.html',
-            controller: FinderController
+            controller: FinderController,
+            bindings: {
+                size: '='
+            }
         });
 
     FinderController.$inject = ['$scope', '$http', 'app'];
 
-    function FinderController($scope, $http, app) {
+    function FinderController($scope, $http, app, bindings) {
         var $ctrl = this;
+        console.log($scope, this);
 
         $scope.app = app;
 
@@ -44,7 +48,10 @@
                 var data = e.data
                 $scope.course = {
                     name: data.name,
-                    courses: cat_id == 14 ? data.cores[0].courses : data.cores[0].children[0].courses
+                    required: {
+                        name: data.cores[0].name,
+                        courses: cat_id == 14 ? data.cores[0].courses : data.cores[0].children[0].courses
+                    }
                 }
                 console.log($scope.course)
             })
