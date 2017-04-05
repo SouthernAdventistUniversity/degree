@@ -39,24 +39,25 @@
 <!-- Course Click -->
 
 <div id="backdropContainer" ng-if="app.hasBackdrop" class="animate-fade">
-    <div id="backdrop" layout="row" layout-wrap>
+    <div id="backdrop" layout="row" layout-wrap ng-if="courseLoaded" class="animate-fade">
         <div id="top" layout="row" layout-align="space-between center" flex="100">
             <ng-letter-avatar data="{{course.name}}" charCount="1" dynamic="true" width="50" height="50"></ng-letter-avatar>
             <div id="name" flex>{{course.name}}</div>
-            <div id="close" ng-click="app.hasBackdrop = false">x</div>
+            <div id="close" ng-click="app.hasBackdrop = false; emptyCourse()">x</div>
         </div>
         <md-list id="courseContainer">
-            <div class="title">{{course.required.name}}</div>
-            <md-list-item class="courses" ng-repeat="course in course.required.courses | orderBy: 'title'">
+            <div class="title">{{course.cores.label}}</div>
+            <md-list-item class="courses" ng-repeat="course in course.cores.courses | orderBy: 'title'">
                 {{course.title}}
             </md-list-item>
         </md-list>
-        <div id="statsContainer" flex>
-            <div class="title">Stats</div>
+        <div id="aboutContainer" flex>
+            <div class="title">About</div>
+            <div class="about">{{course.about}}</div>
         </div>
         <div id="professorContainer">
             <div class="title">Faculty</div>
-            <div class="deanHolder" layout="row" ng-repeat="member in staff track by $index">
+            <div class="deanHolder" layout="row" ng-repeat="member in course.staff | orderBy: 'PreferredName' track by $index">
                 <img ng-src="{{member.PictureLink}}" />
                 <div layout="column">
                     <div id="deanName">{{member.PreferredName}}</div>
@@ -64,5 +65,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div id="loadingContainer" ng-if="!courseLoaded" class="animate-fade" layout="row" layout-align="center center">
+        <img src="images/pie.svg" />
     </div>
 </div>

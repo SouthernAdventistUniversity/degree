@@ -219,6 +219,9 @@
                 z-index: 99999
                 overflow-y: auto
 
+                #loadingContainer
+                    height: 100%
+
                 #backdrop
                     padding: 60px
 
@@ -272,19 +275,22 @@
                             img
                                 margin-right: 14px
                             
-                    #statsContainer
+                    #aboutContainer
                         margin-left: 50px
                         border-top: 1px solid rgb(153,153,153)
                         padding-top: 8px
 
+                        .about
+                            font-size: 17px
+                            line-height: 27px
+                            font-weight: 300
+
                     #professorContainer
-                        margin-left: 50px
-                        border-top: 1px solid rgb(153,153,153)
-                        padding-top: 8px
+                        @extend #aboutContainer
 
                         .deanHolder
                             font-size: 14px
-                            margin-bottom: 11px
+                            margin-bottom: 10px
 
                             img
                                 height: 40px

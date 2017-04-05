@@ -171,6 +171,8 @@
         height: 100%;
         z-index: 99999;
         overflow-y: auto; }
+        .lg #mainContainer #finder #backdropContainer #loadingContainer {
+          height: 100%; }
         .lg #mainContainer #finder #backdropContainer #backdrop {
           padding: 60px; }
           .lg #mainContainer #finder #backdropContainer #backdrop .title {
@@ -211,22 +213,22 @@
                 min-height: auto !important; }
               .lg #mainContainer #finder #backdropContainer #backdrop #courseContainer .courses img {
                 margin-right: 14px; }
-          .lg #mainContainer #finder #backdropContainer #backdrop #statsContainer {
+          .lg #mainContainer #finder #backdropContainer #backdrop #aboutContainer, .lg #mainContainer #finder #backdropContainer #backdrop #professorContainer {
             margin-left: 50px;
             border-top: 1px solid #999999;
             padding-top: 8px; }
-          .lg #mainContainer #finder #backdropContainer #backdrop #professorContainer {
-            margin-left: 50px;
-            border-top: 1px solid #999999;
-            padding-top: 8px; }
-            .lg #mainContainer #finder #backdropContainer #backdrop #professorContainer .deanHolder {
-              font-size: 14px;
-              margin-bottom: 11px; }
-              .lg #mainContainer #finder #backdropContainer #backdrop #professorContainer .deanHolder img {
-                height: 40px;
-                margin-right: 16px; }
-              .lg #mainContainer #finder #backdropContainer #backdrop #professorContainer .deanHolder #deanName {
-                font-weight: 600; }
+            .lg #mainContainer #finder #backdropContainer #backdrop #aboutContainer .about, .lg #mainContainer #finder #backdropContainer #backdrop #professorContainer .about {
+              font-size: 17px;
+              line-height: 27px;
+              font-weight: 300; }
+          .lg #mainContainer #finder #backdropContainer #backdrop #professorContainer .deanHolder {
+            font-size: 14px;
+            margin-bottom: 10px; }
+            .lg #mainContainer #finder #backdropContainer #backdrop #professorContainer .deanHolder img {
+              height: 40px;
+              margin-right: 16px; }
+            .lg #mainContainer #finder #backdropContainer #backdrop #professorContainer .deanHolder #deanName {
+              font-weight: 600; }
     .lg #mainContainer #request {
       background: #ededed;
       width: 320px;
