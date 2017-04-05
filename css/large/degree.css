@@ -221,6 +221,10 @@
               font-size: 17px;
               line-height: 27px;
               font-weight: 300; }
+              .lg #mainContainer #finder #backdropContainer #backdrop #aboutContainer .about a, .lg #mainContainer #finder #backdropContainer #backdrop #professorContainer .about a {
+                text-decoration: none;
+                cursor: default;
+                color: inherit; }
           .lg #mainContainer #finder #backdropContainer #backdrop #professorContainer .deanHolder {
             font-size: 14px;
             margin-bottom: 10px; }

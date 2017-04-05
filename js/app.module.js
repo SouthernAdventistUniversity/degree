@@ -4,6 +4,7 @@
     angular.module('SouthernDegree', [
         'ngMaterial',
         'ngAnimate',
-        'ngLetterAvatar'
+        'ngLetterAvatar',
+        'ngSanitize'
     ]);
 })();

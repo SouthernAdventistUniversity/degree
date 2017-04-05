@@ -15,7 +15,6 @@
 
     function FinderController($scope, $http, app, $timeout) {
         var $ctrl = this;
-        console.log($scope, this);
 
         $scope.app = app;
 
@@ -48,8 +47,9 @@
             app.hasBackdrop = true;
             $scope.courseLoaded = false;
             $http.get('//staging.southern.edu/content?id=' + id + '&catId=' + cat_id).then(function(e) {
+                console.log(e.data);
                 var data = e.data,
-                    description = data.parents[0].description.replace(/<(?:.|\r\n)*?>/gm, '').split('\n'),
+                    parent_description = data.parents[0].description.replace(/<(?:.|\r\n)*?>/gm, '').split('\n'),
                     parent_name = data.parents[0].name,
                     short = [],
                     faculty = "";
@@ -59,12 +59,16 @@
                 $scope.course.parent_name = data.parents[0].name;
                 $scope.course.cores.label = data.cores[0].name;
                 $scope.course.cores.courses = cat_id == 14 ? data.cores[0].courses : data.cores[0].children[0].courses
+                $scope.course.about = data.description.split("<table")[0]
 
-                description.forEach(function(line) {
+                console.log($scope.course.about)
+
+                parent_description.forEach(function(line) {
                     if (line.length > 1) short.push(line);
                 })
+                console.log(short);
+
                 short.forEach(function(line, index) {
-                    if (line.trim() == parent_name) $scope.course.about = short[index + 1];
                     if (line.split(':')[0] == "Faculty") faculty = line.split(':')[1].trim().split(', ');
                 })
 

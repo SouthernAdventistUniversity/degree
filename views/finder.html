@@ -53,7 +53,7 @@
         </md-list>
         <div id="aboutContainer" flex>
             <div class="title">About</div>
-            <div class="about">{{course.about}}</div>
+            <div class="about" ng-bind-html="course.about"></div>
         </div>
         <div id="professorContainer">
             <div class="title">Faculty</div>
