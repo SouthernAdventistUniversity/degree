@@ -58,7 +58,7 @@
                 $scope.course.name = data.name;
                 $scope.course.parent_name = data.parents[0].name;
                 $scope.course.cores.label = data.cores[0].name;
-                $scope.course.cores.courses = cat_id == 14 ? data.cores[0].courses : data.cores[0].children[0].courses
+                $scope.course.cores.courses = cat_id == 16 ? data.cores[0].courses : data.cores[0].children[0].courses
                 $scope.course.about = data.description.split("<table")[0]
 
                 console.log($scope.course.about)
