@@ -136,8 +136,7 @@
                                 .md-select-icon
                                     color: #fff
 
-            md-list
-
+            #degreeList
                 md-list-item
                     border-top: 2px solid rgb(220,220,220)
                     
@@ -252,9 +251,13 @@
                             cursor: pointer
                             color: red
 
-                    #courseContainer
-                        display: inline-block
+                    .container
+                        margin-left: 50px
                         border-top: 1px solid rgb(153,153,153)
+                        padding-top: 8px
+
+                        &:first-child
+                            margin-left: 0
 
 
                         .courses
@@ -262,7 +265,7 @@
                             font-weight: 300
                             border-top-width: 0px
                             border-bottom-width: 0px
-                            min-height: 40px
+                            min-height: 38px
                             padding: 0
                             cursor: pointer
 
@@ -274,24 +277,19 @@
 
                             img
                                 margin-right: 14px
-                            
-                    #aboutContainer
-                        margin-left: 50px
-                        border-top: 1px solid rgb(153,153,153)
-                        padding-top: 8px
 
                         .about
                             font-size: 17px
                             line-height: 27px
                             font-weight: 300
 
+                            p:first-child 
+                                margin-top: 0
+
                             a
                                 text-decoration: none
                                 cursor: default
                                 color: inherit
-
-                    #professorContainer
-                        @extend #aboutContainer
 
                         .deanHolder
                             font-size: 14px

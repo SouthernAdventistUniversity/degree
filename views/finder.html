@@ -15,15 +15,13 @@
     </div>
 </div>
 
-<md-list>
-    <md-list-item ng-repeat="degree in filtered = (degrees | filter: degreeFilter) | limitTo: 10 : user.page * 10" ng-click="getCourseInfo(degree.id, degree.cat_id)" md-no-proxy layout="row" layout-align="start center" layout-wrap>
+<md-list id="degreeList">
+    <md-list-item ng-repeat="degree in filtered = (degrees | filter: degreeFilter) | limitTo: 10 : user.page * 10" ng-click="getDegreeInfo(degree.id, degree.cat_id)" md-no-proxy layout="row" layout-align="start center" layout-wrap>
         <div layout="column">
             <div id="degree_title">{{degree.degree}}</div>
             <div id="degree_school">{{degree.school}}</div>
         </div>
     </md-list-item>
-
-
 </md-list>
 
 <div id="pages">
@@ -45,17 +43,17 @@
             <div id="name" flex>{{course.name}}</div>
             <div id="close" ng-click="app.hasBackdrop = false; emptyCourse()">x</div>
         </div>
-        <md-list id="courseContainer">
+        <div class="container no-margin" layout="column">
             <div class="title">{{course.cores.label}}</div>
-            <md-list-item class="courses" ng-repeat="course in course.cores.courses | orderBy: 'title'">
+            <div class="courses" ng-repeat="course in course.cores.courses | orderBy: 'title'" ng-click="getCourseInfo()">
                 {{course.title}}
-            </md-list-item>
-        </md-list>
-        <div id="aboutContainer" flex>
+            </div>
+        </div>
+        <div class="container" flex layout="column">
             <div class="title">About</div>
             <div class="about" ng-bind-html="course.about"></div>
         </div>
-        <div id="professorContainer">
+        <div class="container" layout="column">
             <div class="title">Faculty</div>
             <div class="deanHolder" layout="row" ng-repeat="member in course.staff | orderBy: 'PreferredName' track by $index">
                 <img ng-src="{{member.PictureLink}}" />

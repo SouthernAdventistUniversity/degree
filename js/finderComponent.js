@@ -43,7 +43,7 @@
             }
         }
 
-        $scope.getCourseInfo = function(id, cat_id) {
+        $scope.getDegreeInfo = function(id, cat_id) {
             app.hasBackdrop = true;
             $scope.courseLoaded = false;
             $http.get('//staging.southern.edu/content?id=' + id + '&catId=' + cat_id).then(function(e) {
@@ -105,8 +105,17 @@
                 var check = false
                 $scope.user.level.forEach(function(level) {
                     if (degrees.level.indexOf(level) > -1 || level == "All Programs") {
+
+
+                        if ($scope.user.level.indexOf("All Programs") > 0) $scope.user.level = ["All Programs"];
+                        else if (level != "All Programs" && $scope.user.level.indexOf("All Programs") > -1) $scope.user.level.splice($scope.user.level.indexOf("All Programs"), 1);
+
+
                         $scope.user.college.forEach(function(college) {
                             if (degrees.school.indexOf(college) > -1 || college == "All Schools") {
+                                console.log($scope.user.college, college)
+                                if ($scope.user.college.indexOf("All Schools") > 0) $scope.user.college = ["All Schools"];
+                                else if (college != "All Schools" && $scope.user.college.indexOf("All Schools") > -1) $scope.user.college.splice($scope.user.college.indexOf("All Schools"), 1);
                                 check = true;
                             }
                         })
