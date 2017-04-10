@@ -48,7 +48,7 @@
                 var data = e.data.split('\n'),
                     hours = data[1],
                     body = data.slice(3, data.length);
-                console.log(hours, data);
+                console.log(e.data);
             });
         }
 
