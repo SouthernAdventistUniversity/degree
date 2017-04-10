@@ -45,7 +45,7 @@
         </div>
         <div class="container no-margin" layout="column">
             <div class="title">{{course.cores.label}}</div>
-            <div class="courses" ng-repeat="course in course.cores.courses | orderBy: 'title'" ng-click="getCourseInfo()">
+            <div class="courses" ng-repeat="course in course.cores.courses | orderBy: 'title'" ng-click="getCourseInfo(course['legacy-id'], course['catalog-id'])">
                 {{course.title}}
             </div>
         </div>
@@ -56,7 +56,7 @@
         <div class="container" layout="column">
             <div class="title">Faculty</div>
             <div class="deanHolder" layout="row" ng-repeat="member in course.staff | orderBy: 'PreferredName' track by $index">
-                <img ng-src="{{member.PictureLink}}" />
+                <img src="./images/grey_bg.png" ng-src="{{member.PictureLink}}" />
                 <div layout="column">
                     <div id="deanName">{{member.PreferredName}}</div>
                     <div id="deanPosition">{{member.PositionTitle}}</div>

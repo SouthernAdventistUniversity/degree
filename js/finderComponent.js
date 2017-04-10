@@ -11,9 +11,9 @@
             }
         });
 
-    FinderController.$inject = ['$scope', '$http', 'app', '$timeout'];
+    FinderController.$inject = ['$scope', '$http', 'app', '$timeout', '$sce'];
 
-    function FinderController($scope, $http, app, $timeout) {
+    function FinderController($scope, $http, app, $timeout, $sce) {
         var $ctrl = this;
 
         $scope.app = app;
@@ -43,6 +43,15 @@
             }
         }
 
+        $scope.getCourseInfo = function(id, cat_id) {
+            $http.get('//staging.southern.edu/course_preview?id=' + id + '&catId=' + cat_id).then(function(e) {
+                var data = e.data.split('\n'),
+                    hours = data[1],
+                    body = data.slice(3, data.length);
+                console.log(hours, data);
+            });
+        }
+
         $scope.getDegreeInfo = function(id, cat_id) {
             app.hasBackdrop = true;
             $scope.courseLoaded = false;
@@ -57,16 +66,14 @@
                 $scope.course.staff = [];
                 $scope.course.name = data.name;
                 $scope.course.parent_name = data.parents[0].name;
+                $scope.course.about = data.description.split("<table")[0];
+
                 $scope.course.cores.label = data.cores[0].name;
                 $scope.course.cores.courses = cat_id == 16 ? data.cores[0].courses : data.cores[0].children[0].courses
-                $scope.course.about = data.description.split("<table")[0]
-
-                console.log($scope.course.about)
 
                 parent_description.forEach(function(line) {
                     if (line.length > 1) short.push(line);
                 })
-                console.log(short);
 
                 short.forEach(function(line, index) {
                     if (line.split(':')[0] == "Faculty") faculty = line.split(':')[1].trim().split(', ');
@@ -82,6 +89,8 @@
                 })
                 $scope.courseLoaded = true;
             })
+
+            console.log($scope.course);
         }
 
         $scope.emptyCourse = function() {
@@ -105,15 +114,10 @@
                 var check = false
                 $scope.user.level.forEach(function(level) {
                     if (degrees.level.indexOf(level) > -1 || level == "All Programs") {
-
-
                         if ($scope.user.level.indexOf("All Programs") > 0) $scope.user.level = ["All Programs"];
                         else if (level != "All Programs" && $scope.user.level.indexOf("All Programs") > -1) $scope.user.level.splice($scope.user.level.indexOf("All Programs"), 1);
-
-
                         $scope.user.college.forEach(function(college) {
                             if (degrees.school.indexOf(college) > -1 || college == "All Schools") {
-                                console.log($scope.user.college, college)
                                 if ($scope.user.college.indexOf("All Schools") > 0) $scope.user.college = ["All Schools"];
                                 else if (college != "All Schools" && $scope.user.college.indexOf("All Schools") > -1) $scope.user.college.splice($scope.user.college.indexOf("All Schools"), 1);
                                 check = true;
@@ -223,3 +227,8 @@
         }
     }
 })();
+
+
+function loadingCourses(e) {
+    console.log(e.Html);
+}
