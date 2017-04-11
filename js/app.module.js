@@ -5,6 +5,7 @@
         'ngMaterial',
         'ngAnimate',
         'ngLetterAvatar',
-        'ngSanitize'
+        'ngSanitize',
+        'chart.js'
     ]);
 })();
