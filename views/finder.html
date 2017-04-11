@@ -43,16 +43,26 @@
             <div id="name" flex>{{course.name}}</div>
             <div id="close" ng-click="app.hasBackdrop = false; emptyCourse()">x</div>
         </div>
+
+
         <div class="container no-margin" layout="column">
-            <div class="title">{{course.cores.label}}</div>
-            <div class="courses" ng-repeat="course in course.cores.courses | orderBy: 'title'" ng-click="getCourseInfo(course['legacy-id'], course['catalog-id'])">
-                {{course.title}}
+            <div class="core" ng-repeat="core in course.cores">
+                <div class="title" ng-if="core.courses.length">{{core.name}}</div>
+                <div class="courses" ng-repeat="course in core.courses" ng-click="getCourseInfo(course['legacy-id'], course['catalog-id'])">
+                    {{course.title}}
+                </div>
             </div>
         </div>
+
+
+
         <div class="container" flex layout="column">
             <div class="title">About</div>
             <div class="about" ng-bind-html="course.about"></div>
         </div>
+
+
+
         <div class="container" layout="column">
             <div class="title">Faculty</div>
             <div class="deanHolder" layout="row" ng-repeat="member in course.staff | orderBy: 'PreferredName' track by $index">
@@ -63,6 +73,9 @@
                 </div>
             </div>
         </div>
+
+
+
     </div>
     <div id="loadingContainer" ng-if="!courseLoaded" class="animate-fade" layout="row" layout-align="center center">
         <img src="images/pie.svg" />

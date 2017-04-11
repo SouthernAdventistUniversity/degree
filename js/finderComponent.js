@@ -48,7 +48,7 @@
                 var data = e.data.split('\n'),
                     hours = data[1],
                     body = data.slice(3, data.length);
-                console.log(e.data);
+                console.log(body);
             });
         }
 
@@ -69,7 +69,7 @@
                 $scope.course.about = data.description.split("<table")[0];
 
                 $scope.course.cores.label = data.cores[0].name;
-                $scope.course.cores.courses = cat_id == 16 ? data.cores[0].courses : data.cores[0].children[0].courses
+                $scope.course.cores = data.cores;
 
                 parent_description.forEach(function(line) {
                     if (line.length > 1) short.push(line);
