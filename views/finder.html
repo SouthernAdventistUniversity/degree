@@ -72,8 +72,13 @@
                     <div id="deanPosition">{{member.PositionTitle}}</div>
                 </div>
             </div>
-            <div class="title">Stats</div>
-            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-options="options"></canvas>
+            <div style="text-align: center">
+                <div class="title">Stats</div>
+                <canvas id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-options="options"></canvas>
+                <div class="smallDesc">These are the percentages of graduates from this department that found a job in their major.</div>
+                <div class="ratio">{{course.ratio}}:1</div>
+                <div class="smallDesc">The ratio of students per faculty member in the {{course.parent_name}} department</div>
+            </div>
         </div>
 
 

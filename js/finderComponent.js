@@ -28,6 +28,7 @@
 
         $scope.course = {};
         $scope.course.cores = {};
+
         $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
         $scope.data = [300, 500, 100];
 
@@ -70,8 +71,14 @@
                 $scope.course.parent_name = data.parents[0].name;
                 $scope.course.about = data.description.split("<table")[0];
 
+                console.log($scope.course.parent_name)
+
                 $scope.course.cores.label = data.cores[0].name;
                 $scope.course.cores = data.cores;
+
+                $http.get('http://staging.southern.edu/fts?department=' + $scope.course.parent_name.replace("School of", "").replace("Allied Health", "Biology") + '&term=Fall%202016').then(function(e) {
+                    $scope.course.ratio = Math.floor(e.data);
+                });
 
                 parent_description.forEach(function(line) {
                     if (line.length > 1) short.push(line);
