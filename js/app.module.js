@@ -6,6 +6,7 @@
         'ngAnimate',
         'ngLetterAvatar',
         'ngSanitize',
-        'chart.js'
+        'chart.js',
+        'countTo'
     ]);
 })();
