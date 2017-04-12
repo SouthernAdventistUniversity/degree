@@ -29,7 +29,7 @@
         $scope.course = {};
         $scope.course.cores = {};
 
-        $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+        $scope.labels = ["Out-field", "In-field", "Unknown"];
         $scope.data = [300, 500, 100];
 
         ////////////////
