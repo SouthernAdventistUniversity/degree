@@ -39,9 +39,15 @@
 <div id="backdropContainer" ng-if="app.hasBackdrop" class="animate-fade">
     <div id="backdrop" layout="row" layout-wrap ng-if="courseLoaded" class="animate-fade">
         <div id="top" layout="row" layout-align="space-between center" flex="100">
-            <ng-letter-avatar data="{{course.name}}" charCount="1" dynamic="true" width="50" height="50"></ng-letter-avatar>
-            <div id="name" flex>{{course.name}}</div>
+            <div layout="row">
+                <ng-letter-avatar data="{{course.name}}" charCount="1" dynamic="true" width="50" height="50"></ng-letter-avatar>
+                <div layout="column">
+                    <div id="name" flex>{{course.name}}</div>
+                    <div class="parent_name">{{course.parent_name}}</div>
+                </div>
+            </div>
             <div id="close" ng-click="app.hasBackdrop = false; emptyCourse()">x</div>
+
         </div>
 
 

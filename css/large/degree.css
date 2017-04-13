@@ -192,6 +192,11 @@
               font-weight: 600;
               font-size: 36px;
               margin-left: 24px; }
+            .lg #mainContainer #finder #backdropContainer #backdrop #top .parent_name {
+              font-family: Sorts Mill Goudy;
+              margin-left: 24px;
+              font-size: 20px;
+              color: #999; }
             .lg #mainContainer #finder #backdropContainer #backdrop #top #close {
               outline: none;
               font-size: 30px;
