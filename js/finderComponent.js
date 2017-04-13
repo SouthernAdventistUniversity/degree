@@ -64,8 +64,7 @@
                 var data = e.data,
                     parent_description = data.parents[0].description.replace(/<(?:.|\r\n)*?>/gm, '').split('\n'),
                     parent_name = data.parents[0].name,
-                    short = [],
-                    faculty = "";
+                    short = [];
 
                 $scope.course.staff = [];
                 $scope.course.name = data.name;
@@ -77,28 +76,24 @@
                 $http.get('http://staging.southern.edu/fts?department=' + $scope.course.parent_name.replace("School of", "").replace("Allied Health", "Biology") + '&term=Fall%202016').then(function(e) {
                     $scope.course.ratio = Math.floor(e.data);
                 });
-
+                console.log(parent_description)
                 parent_description.forEach(function(line) {
                     if (line.length > 1) short.push(line);
                 });
 
-                short.forEach(function(line, index) {
-                    if (line.split(':')[0] == "Faculty") faculty = line.split(':')[1].trim().split(', ');
-                });
-
-                faculty.forEach(function(member) {
-                    var name = member.split(" "),
-                        first = name[0],
-                        last = name[name.length - 1],
-                        staffMember = [];
-                    $http.get('http://www.southern.edu/api/people-search/?' + removeDiacritics(first + ' ' + last)).then(function(e) {
-                        if (e.data[0]) staffMember.push(e.data[0]);
+                $http.get('http://www.southern.edu/api/people-search/?' + $scope.course.parent_name + '&mode=prof_by_area').then(function(e) {
+                    var data = e.data;
+                    console.log(data);
+                    data.forEach(function(member) {
+                        console.log(member);
+                        var staffMember = [member];
                         $scope.ratingsList.forEach(function(rating) {
-                            if (removeDiacritics(rating.teacherfirstname_t) == removeDiacritics(e.data[0].Nickname) && removeDiacritics(rating.teacherlastname_t) == removeDiacritics(last)) staffMember.push(rating);
+                            if (removeDiacritics(rating.teacherfirstname_t) == removeDiacritics(member.Nickname) && removeDiacritics(rating.teacherlastname_t) == removeDiacritics(member.LastName)) staffMember.push(rating);
                         });
                         $scope.course.staff.push(staffMember);
                     });
                 });
+
                 console.log($scope.course.staff)
                 $scope.courseLoaded = true;
             })
