@@ -28,7 +28,8 @@
 
         $scope.course = {};
         $scope.course.cores = {};
-
+        $scope.ratingsList = ratings[0].response.docs;
+        console.log($scope.ratingsList);
         $scope.labels = ["Out-field", "In-field", "Unknown"];
         $scope.data = [300, 500, 100];
 
@@ -51,7 +52,7 @@
                 var data = e.data.split('\n'),
                     hours = data[1],
                     body = data.slice(3, data.length);
-                console.log(body);
+                console.log(hours, body);
             });
         }
 
@@ -70,10 +71,7 @@
                 $scope.course.name = data.name;
                 $scope.course.parent_name = data.parents[0].name;
                 $scope.course.about = data.description.split("<table")[0];
-
-                console.log($scope.course.parent_name)
-
-                $scope.course.cores.label = data.cores[0].name;
+                $scope.course.cores.label = data.cores[0] ? data.cores[0].name : "";
                 $scope.course.cores = data.cores;
 
                 $http.get('http://staging.southern.edu/fts?department=' + $scope.course.parent_name.replace("School of", "").replace("Allied Health", "Biology") + '&term=Fall%202016').then(function(e) {
@@ -82,20 +80,26 @@
 
                 parent_description.forEach(function(line) {
                     if (line.length > 1) short.push(line);
-                })
+                });
 
                 short.forEach(function(line, index) {
                     if (line.split(':')[0] == "Faculty") faculty = line.split(':')[1].trim().split(', ');
-                })
+                });
 
                 faculty.forEach(function(member) {
                     var name = member.split(" "),
                         first = name[0],
-                        last = name[name.length - 1];
+                        last = name[name.length - 1],
+                        staffMember = [];
                     $http.get('http://www.southern.edu/api/people-search/?' + removeDiacritics(first + ' ' + last)).then(function(e) {
-                        if (e.data[0]) $scope.course.staff.push(e.data[0]);
+                        if (e.data[0]) staffMember.push(e.data[0]);
+                        $scope.ratingsList.forEach(function(rating) {
+                            if (removeDiacritics(rating.teacherfirstname_t) == removeDiacritics(e.data[0].Nickname) && removeDiacritics(rating.teacherlastname_t) == removeDiacritics(last)) staffMember.push(rating);
+                        });
+                        $scope.course.staff.push(staffMember);
                     });
-                })
+                });
+                console.log($scope.course.staff)
                 $scope.courseLoaded = true;
             })
 
@@ -105,6 +109,10 @@
         $scope.emptyCourse = function() {
             $scope.course = {};
             $scope.course.cores = {};
+        }
+
+        $scope.getRating = function(name) {
+            console.log(name)
         }
 
         $http.get('//staging.southern.edu/departments').then(function(e) {
@@ -236,8 +244,3 @@
         }
     }
 })();
-
-
-function loadingCourses(e) {
-    console.log(e.Html);
-}

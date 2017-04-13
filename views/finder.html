@@ -65,12 +65,15 @@
 
         <div class="container" layout="column">
             <div class="title">Faculty</div>
-            <div class="deanHolder" layout="row" ng-repeat="member in course.staff | orderBy: 'PreferredName' track by $index">
-                <img src="./images/grey_bg.png" ng-src="{{member.PictureLink}}" />
-                <div layout="column">
-                    <div id="deanName">{{member.PreferredName}}</div>
-                    <div id="deanPosition">{{member.PositionTitle}}</div>
+            <div class="deanHolder" ng-repeat="member in course.staff | orderBy: 'PreferredName' track by $index" layout="row" layout-align="space-between center">
+                <div layout="row">
+                    <img src="./images/grey_bg.png" ng-src="{{member[0].PictureLink}}" />
+                    <div layout="column">
+                        <div id="deanName">{{member[0].PreferredName}}</div>
+                        <div id="deanPosition">{{member[0].PositionTitle}}</div>
+                    </div>
                 </div>
+                <div class="rating" ng-if="member[1].total_number_of_ratings_i">{{member[1].averageratingscore_rf}}</div>
             </div>
             <div style="text-align: center">
                 <div class="title">Stats</div>
