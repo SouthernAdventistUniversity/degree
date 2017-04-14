@@ -194,7 +194,7 @@
               margin-left: 24px; }
             .lg #mainContainer #finder #backdropContainer #backdrop #top .parent_name {
               font-family: Sorts Mill Goudy;
-              margin-left: 24px;
+              margin-left: 26px;
               font-size: 20px;
               color: #999; }
             .lg #mainContainer #finder #backdropContainer #backdrop #top #close {
@@ -207,6 +207,17 @@
             margin-left: 50px; }
             .lg #mainContainer #finder #backdropContainer #backdrop .container:first-child {
               margin-left: 0; }
+            .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table {
+              width: 100%; }
+              .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table tr td {
+                font-weight: 100;
+                font-size: 18px;
+                line-height: 2; }
+                .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table tr td:nth-child(2) {
+                  text-align: right;
+                  width: 50px; }
+                .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table tr td:nth-child(3) {
+                  display: none; }
             .lg #mainContainer #finder #backdropContainer #backdrop .container .courses {
               font-size: 16px;
               font-weight: 300;
@@ -239,6 +250,11 @@
                 margin-right: 16px; }
               .lg #mainContainer #finder #backdropContainer #backdrop .container .deanHolder #deanName {
                 font-weight: 600; }
+              .lg #mainContainer #finder #backdropContainer #backdrop .container .deanHolder #deanPosition {
+                width: 150px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden; }
               .lg #mainContainer #finder #backdropContainer #backdrop .container .deanHolder .rating {
                 background: #fed53d;
                 padding: 10px;

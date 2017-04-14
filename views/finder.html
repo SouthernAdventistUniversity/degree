@@ -10,7 +10,7 @@
         <span class="label">Area of Study</span>
         <md-select class="md-no-underline" multiple ng-model="user.college" ng-change="user.page = 0" md-selected-text="{{user.college}}" aria-label="Program Level">
             <md-option ng-value="'All Schools'">All Schools</md-option>
-            <md-option ng-repeat="school in schools">{{school}}</md-option>
+            <md-option ng-repeat="school in schools | orderBy: '+'">{{school}}</md-option>
         </md-select>
     </div>
 </div>
@@ -58,6 +58,8 @@
                     {{course.title}}
                 </div>
             </div>
+            <div class="title">Hours</div>
+            <div class="course_hours" ng-bind-html="course.course_hours"></div>
         </div>
 
 
@@ -71,9 +73,9 @@
 
         <div class="container" layout="column">
             <div class="title">Faculty</div>
-            <div class="deanHolder" ng-repeat="member in course.staff | orderBy: 'PreferredName' track by $index" layout="row" layout-align="space-between center">
+            <div class="deanHolder" ng-repeat="member in course.staff | limitTo: 7 | orderBy: 'PreferredName' track by $index" layout="row" layout-align="space-between center">
                 <div layout="row">
-                    <img src="./images/grey_bg.png" ng-src="{{member[0].PictureLink}}&w=40&h=40" />
+                    <img src="./images/grey_bg.png" ng-src="{{member[0].PictureLink}}&w=100&h=40" />
                     <div layout="column">
                         <div id="deanName">{{member[0].PreferredName}}</div>
                         <div id="deanPosition">{{member[0].PositionTitle}}</div>

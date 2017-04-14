@@ -247,7 +247,7 @@
                             
                         .parent_name
                             font-family: Sorts Mill Goudy
-                            margin-left: 24px
+                            margin-left: 26px
                             font-size: 20px
                             color: #999
 
@@ -264,6 +264,24 @@
                         &:first-child
                             margin-left: 0
 
+                        .course_hours
+
+                            table
+                                width: 100%
+
+                                tr
+                                    td
+                                        font-weight: 100
+                                        font-size: 18px
+                                        line-height: 2
+
+                                        &:nth-child(2)
+                                            text-align: right
+                                            width: 50px
+                                        
+                                        &:nth-child(3)
+                                            display: none
+                                    
 
                         .courses
                             font-size: 16px
@@ -306,6 +324,12 @@
 
                             #deanName
                                 font-weight: 600
+
+                            #deanPosition
+                                width: 150px
+                                white-space: nowrap
+                                text-overflow: ellipsis
+                                overflow: hidden
 
                             .rating
                                 background: #fed53d

@@ -29,7 +29,6 @@
         $scope.course = {};
         $scope.course.cores = {};
         $scope.ratingsList = ratings[0].response.docs;
-        console.log($scope.ratingsList);
         $scope.labels = ["Out-field", "In-field", "Unknown"];
         $scope.data = [300, 500, 100];
 
@@ -52,7 +51,6 @@
                 var data = e.data.split('\n'),
                     hours = data[1],
                     body = data.slice(3, data.length);
-                console.log(hours, body);
             });
         }
 
@@ -60,9 +58,7 @@
             app.hasBackdrop = true;
             $scope.courseLoaded = false;
             $http.get('//staging.southern.edu/content?id=' + id + '&catId=' + cat_id).then(function(e) {
-                console.log(e.data);
                 var data = e.data,
-                    parent_description = data.parents[0].description.replace(/<(?:.|\r\n)*?>/gm, '').split('\n'),
                     parent_name = data.parents[0].name,
                     short = [];
 
@@ -70,15 +66,12 @@
                 $scope.course.name = data.name;
                 $scope.course.parent_name = data.parents[0].name;
                 $scope.course.about = data.description.split("<table")[0];
+                $scope.course.course_hours = '<table' + data.description.split("<table")[1];
                 $scope.course.cores.label = data.cores[0] ? data.cores[0].name : "";
                 $scope.course.cores = data.cores;
 
                 $http.get('http://staging.southern.edu/fts?department=' + $scope.course.parent_name.replace("School of", "").replace("Allied Health", "Biology") + '&term=Fall%202016').then(function(e) {
                     $scope.course.ratio = Math.floor(e.data);
-                });
-                console.log(parent_description)
-                parent_description.forEach(function(line) {
-                    if (line.length > 1) short.push(line);
                 });
 
                 $http.get('http://www.southern.edu/api/people-search/?' + $scope.course.parent_name + '&mode=prof_by_area').then(function(e) {
@@ -94,11 +87,9 @@
                     });
                 });
 
-                console.log($scope.course.staff)
                 $scope.courseLoaded = true;
             })
 
-            console.log($scope.course);
         }
 
         $scope.emptyCourse = function() {
@@ -106,9 +97,7 @@
             $scope.course.cores = {};
         }
 
-        $scope.getRating = function(name) {
-            console.log(name)
-        }
+        $scope.getRating = function(name) {}
 
         $http.get('//staging.southern.edu/departments').then(function(e) {
             var data = e.data,
