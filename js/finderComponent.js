@@ -47,10 +47,13 @@
         }
 
         $scope.getCourseInfo = function(id, cat_id) {
+            $scope.preview = "";
             $http.get('//staging.southern.edu/course_preview?id=' + id + '&catId=' + cat_id).then(function(e) {
                 var data = e.data.split('\n'),
                     hours = data[1],
                     body = data.slice(3, data.length);
+
+                $scope.preview = body[0];
             });
         }
 
@@ -70,10 +73,13 @@
                 $scope.course.cores.label = data.cores[0] ? data.cores[0].name : "";
                 $scope.course.cores = data.cores;
 
+
+                // Gets Faculty to Student Ratio
                 $http.get('http://staging.southern.edu/fts?department=' + $scope.course.parent_name.replace("School of", "").replace("Allied Health", "Biology") + '&term=Fall%202016').then(function(e) {
                     $scope.course.ratio = Math.floor(e.data);
                 });
 
+                // Gets faculty list
                 $http.get('http://www.southern.edu/api/people-search/?' + $scope.course.parent_name + '&mode=prof_by_area').then(function(e) {
                     var data = e.data;
                     console.log(data);
@@ -92,16 +98,13 @@
 
         }
 
-        $scope.emptyCourse = function() {
-            $scope.course = {};
-            $scope.course.cores = {};
-        }
 
-        $scope.getRating = function(name) {}
 
+        // Gets school and degree list
         $http.get('//staging.southern.edu/departments').then(function(e) {
             var data = e.data,
                 schools = [];
+            console.log(data);
             data.forEach(function(info) {
                 if (schools.indexOf(info.school) === -1)
                     schools.push(info.school);
@@ -225,6 +228,11 @@
 
             return str;
 
+        }
+
+        $scope.emptyCourse = function() {
+            $scope.course = {};
+            $scope.course.cores = {};
         }
     }
 })();

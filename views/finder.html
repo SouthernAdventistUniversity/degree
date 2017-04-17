@@ -54,8 +54,9 @@
         <div class="container no-margin" layout="column">
             <div class="core" ng-repeat="core in course.cores">
                 <div class="title" ng-if="core.courses.length">{{core.name}}</div>
-                <div class="courses" ng-repeat="course in core.courses" ng-click="getCourseInfo(course['legacy-id'], course['catalog-id'])">
+                <div class="courses" ng-repeat="course in core.courses" ng-init="open = false;" ng-click="getCourseInfo(course['legacy-id'], course['catalog-id']);open = !open">
                     {{course.title}}
+                    <div class="course_desc" ng-if="open">{{preview}}</div>
                 </div>
             </div>
             <div class="title">Hours</div>
@@ -87,7 +88,7 @@
                 <div class="title">Stats</div>
                 <canvas id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-options="options"></canvas>
                 <div class="smallDesc">These are the percentages of graduates from this department that found a job in their major.</div>
-                <div class="ratio"> <span count-to="{{course.ratio}}" value="40" duration="2"></span>:1</div>
+                <div class="ratio"> <span count-to="{{course.ratio}}" value="40" duration="1.5"></span>:1</div>
                 <div class="smallDesc">The ratio of students per faculty member in the {{course.parent_name}} department</div>
             </div>
         </div>

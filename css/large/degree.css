@@ -202,7 +202,9 @@
               font-size: 30px;
               padding: 0 25px;
               cursor: pointer;
-              color: red; }
+              color: red;
+              height: 18px;
+              line-height: 0.4; }
           .lg #mainContainer #finder #backdropContainer #backdrop .container {
             margin-left: 50px; }
             .lg #mainContainer #finder #backdropContainer #backdrop .container:first-child {
@@ -226,12 +228,17 @@
               min-height: 38px;
               padding: 0;
               cursor: pointer; }
-              .lg #mainContainer #finder #backdropContainer #backdrop .container .courses:hover {
-                text-decoration: underline; }
               .lg #mainContainer #finder #backdropContainer #backdrop .container .courses:before {
                 min-height: auto !important; }
               .lg #mainContainer #finder #backdropContainer #backdrop .container .courses img {
                 margin-right: 14px; }
+              .lg #mainContainer #finder #backdropContainer #backdrop .container .courses .course_desc {
+                max-width: 365px;
+                padding: 14px;
+                box-sizing: border-box;
+                background: #f1f1f1;
+                font-size: 13px;
+                margin: 10px 0 26px; }
             .lg #mainContainer #finder #backdropContainer #backdrop .container .about {
               font-size: 17px;
               line-height: 27px;
