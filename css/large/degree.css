@@ -227,7 +227,11 @@
               border-bottom-width: 0px;
               min-height: 38px;
               padding: 0;
-              cursor: pointer; }
+              cursor: pointer;
+              max-width: 24vw;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis; }
               .lg #mainContainer #finder #backdropContainer #backdrop .container .courses:before {
                 min-height: auto !important; }
               .lg #mainContainer #finder #backdropContainer #backdrop .container .courses img {
