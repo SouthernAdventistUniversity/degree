@@ -81,16 +81,8 @@
 
                 // Gets faculty list
                 $http.get('http://www.southern.edu/api/people-search/?' + $scope.course.parent_name + '&mode=prof_by_area').then(function(e) {
-                    var data = e.data;
-                    console.log(data);
-                    data.forEach(function(member) {
-                        console.log(member);
-                        var staffMember = [member];
-                        $scope.ratingsList.forEach(function(rating) {
-                            if (removeDiacritics(rating.teacherfirstname_t) == removeDiacritics(member.Nickname) && removeDiacritics(rating.teacherlastname_t) == removeDiacritics(member.LastName)) staffMember.push(rating);
-                        });
-                        $scope.course.staff.push(staffMember);
-                    });
+                    $scope.course.staff = e.data;
+                    console.log($scope.course.staff);
                 });
 
                 $scope.courseLoaded = true;

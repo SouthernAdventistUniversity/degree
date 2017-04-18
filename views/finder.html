@@ -74,15 +74,18 @@
 
         <div class="container" layout="column">
             <div class="title">Faculty</div>
-            <div class="deanHolder" ng-repeat="member in course.staff | limitTo: 7 | orderBy: 'PreferredName' track by $index" layout="row" layout-align="space-between center">
+            <div class="deanHolder" ng-repeat="(key, value) in course.staff track by $index" layout="row" layout-align="space-between center">
                 <div layout="row">
-                    <img src="./images/grey_bg.png" ng-src="{{member[0].PictureLink}}&w=100&h=40" />
+                    <img src="./images/grey_bg.png" ng-src="{{value.PictureLink}}&w=100&h=40" />
                     <div layout="column">
-                        <div id="deanName">{{member[0].PreferredName}}</div>
-                        <div id="deanPosition">{{member[0].PositionTitle}}</div>
+                        <div id="deanName">{{value.PreferredName}}</div>
+                        <div id="deanPosition">{{value.PositionTitle}}</div>
                     </div>
                 </div>
-                <div class="rating" ng-if="member[1].total_number_of_ratings_i">{{member[1].averageratingscore_rf}}</div>
+                <div class="rating">
+                    <md-tooltip>RateMyProfessor</md-tooltip>
+                    {{value.Rating >= 4 ? value.Rating : '< 4 '}}
+                </div>
             </div>
             <div style="text-align: center">
                 <div class="title">Stats</div>
