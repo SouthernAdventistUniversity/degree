@@ -16,7 +16,7 @@
 </div>
 
 <md-list id="degreeList">
-    <md-list-item ng-repeat="degree in filtered = (degrees | filter: degreeFilter) | limitTo: 10 : user.page * 10" ng-click="getDegreeInfo(degree.id, degree.cat_id)" md-no-proxy layout="row" layout-align="start center" layout-wrap>
+    <md-list-item ng-repeat="degree in filtered = (degrees | filter: degreeFilter) | orderBy: ['school', 'degree'] | limitTo: 10 : user.page * 10" ng-click="getDegreeInfo(degree.id, degree.cat_id)" md-no-proxy layout="row" layout-align="start center" layout-wrap>
         <div layout="column">
             <div id="degree_title">{{degree.degree}}</div>
             <div id="degree_school">{{degree.school}}</div>
@@ -84,7 +84,7 @@
                 </div>
                 <div class="rating">
                     <md-tooltip>RateMyProfessor</md-tooltip>
-                    {{value.Rating >= 4 ? value.Rating : '< 4 '}}
+                    {{value.Rating >= 1 ? value.Rating : '-'}}
                 </div>
             </div>
             <div style="text-align: center">
