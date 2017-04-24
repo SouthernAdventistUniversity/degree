@@ -41,6 +41,7 @@
                 for (var i = 0; i < num; i++) {
                     numArray.push(i);
                 }
+
                 $scope.maxPages = num;
                 return numArray
             }

@@ -29,7 +29,7 @@
     <div id="emptyFields" ng-if="!filtered.length && !user.level.length">Please select a <b>Program Level</b></div>
     <div id="emptyFields" ng-if="!filtered.length && !user.college.length">Please select an <b>Area of Study</b></div>
     <div class="prev" ng-if="filtered.length" ng-disabled="!user.page" ng-click="user.page = user.page-1">{{$ctrl.size == 'xs' ? '&#10094' : 'Previous'}}</div>
-    <span ng-repeat="i in getArray(filtered.length) | limitTo: 5:(user.page >= 5 ? maxPages - 5  : user.page)" ng-click="user.page = i" ng-class="{active:user.page == i, first:$first, last:$last}">{{i+1}}</span>
+    <span ng-repeat="i in getArray(filtered.length) | limitTo: 5:(user.page >= maxPages - 5 ? maxPages - 5  : user.page)" ng-click="user.page = i" ng-class="{active:user.page == i, first:$first, last:$last}">{{i+1}}</span>
     <div class="next" ng-if="filtered.length" ng-disabled="user.page == maxPages-1" ng-click="user.page = user.page+1">{{$ctrl.size == 'xs' ? '&#10095' : 'Next'}}</div>
 </div>
 
@@ -83,7 +83,7 @@
                     </div>
                 </div>
                 <div class="rating">
-                    <md-tooltip>RateMyProfessor</md-tooltip>
+                    <md-tooltip>RateMyProfessor (max score is 5)</md-tooltip>
                     {{value.Rating >= 1 ? value.Rating : '-'}}
                 </div>
             </div>
