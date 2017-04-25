@@ -70,6 +70,7 @@
                 $scope.course.name = data.name;
                 $scope.course.parent_name = data.parents[0].name;
                 $scope.course.about = data.description.split("<table")[0];
+                $scope.course.aboutCheck = data.description.split("<table")[0].replace(/<(?:.|\n)*?>/gm, '').trim();
                 $scope.course.course_hours = '<table' + data.description.split("<table")[1];
                 $scope.course.cores.label = data.cores[0] ? data.cores[0].name : "";
                 $scope.course.cores = data.cores;

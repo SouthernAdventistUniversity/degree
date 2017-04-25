@@ -209,24 +209,22 @@
             margin-left: 50px; }
             .lg #mainContainer #finder #backdropContainer #backdrop .container:first-child {
               margin-left: 0; }
-            .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours {
-              max-width: 24vw; }
-              .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours a {
-                text-decoration: none;
-                cursor: default;
-                color: inherit;
-                pointer-events: none; }
-              .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table {
-                width: 100%; }
-                .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table tr td {
-                  font-weight: 100;
-                  font-size: 18px;
-                  line-height: 2; }
-                  .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table tr td:nth-child(2) {
-                    text-align: right;
-                    width: 50px; }
-                  .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table tr td:nth-child(3) {
-                    display: none; }
+            .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours a {
+              text-decoration: none;
+              cursor: default;
+              color: inherit;
+              pointer-events: none; }
+            .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table {
+              width: 100%; }
+              .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table tr td {
+                font-weight: 100;
+                font-size: 18px;
+                line-height: 2; }
+                .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table tr td:nth-child(2) {
+                  text-align: right;
+                  width: 50px; }
+                .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table tr td:nth-child(3) {
+                  display: none; }
             .lg #mainContainer #finder #backdropContainer #backdrop .container .courses {
               font-size: 16px;
               font-weight: 300;
