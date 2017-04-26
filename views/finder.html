@@ -18,7 +18,7 @@
 <md-list id="degreeList">
     <md-list-item ng-repeat="degree in filtered = (degrees | filter: degreeFilter) | orderBy: ['school', 'degree'] | limitTo: 10 : user.page * 10" ng-click="getDegreeInfo(degree.id, degree.cat_id)" md-no-proxy layout="row" layout-align="start center" layout-wrap>
         <div layout="column">
-            <div id="degree_title">{{degree.degree}} | {{degree.id}}</div>
+            <div id="degree_title">{{degree.degree}}</div>
             <div id="degree_school">{{degree.school}}</div>
         </div>
     </md-list-item>
