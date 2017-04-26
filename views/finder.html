@@ -51,7 +51,7 @@
         </div>
 
         <div layout="row" layout-align="space-between start">
-            <div class="container no-margin" layout="column">
+            <div class="container no-margin" layout="column" ng-if="course.courseCheck">
                 <div class="core" ng-repeat="core in course.cores">
                     <div class="title" ng-if="core.courses.length">{{core.name}}</div>
                     <div class="courses" ng-repeat="course in core.courses" ng-init="open = false;" ng-click="getCourseInfo(course['legacy-id'], course['catalog-id']);open = !open">
@@ -59,8 +59,10 @@
                         <div class="course_desc" ng-if="open">{{preview}}</div>
                     </div>
                 </div>
-                <div class="title">Hours</div>
-                <div class="course_hours" ng-bind-html="course.course_hours"></div>
+                <div ng-if="course.courseCheck">
+                    <div class="title">Hours</div>
+                    <div class="course_hours" ng-bind-html="course.course_hours"></div>
+                </div>
             </div>
 
 
@@ -82,7 +84,7 @@
                             <div id="deanPosition">{{value.PositionTitle}}</div>
                         </div>
                     </div>
-                    <div class="rating">
+                    <div class="rating" ng-if="value.Rating >= 4">
                         <md-tooltip>RateMyProfessor (max score is 5)</md-tooltip>
                         {{value.Rating >= 1 ? value.Rating : '-'}}
                     </div>
