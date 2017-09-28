@@ -84,6 +84,7 @@
                 <div class="about" ng-bind-html="course_body"></div>
 
                 <div class="title">Related Careers</div>
+                <div class="jobs" ng-repeat="job in jobs.jobs">{{job}}</div>
             </div>
 
 
@@ -105,8 +106,8 @@
                 </div>
                 <div style="text-align: center">
                     <div class="title">Stats</div>
-                    <canvas id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-options="options"></canvas>
-                    <div class="smallDesc">These are the percentages of graduates from this department that found a job in their major.</div>
+                    <!--<canvas id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-options="options"></canvas>
+                    <div class="smallDesc">These are the percentages of graduates from this department that found a job in their major.</div>-->
                     <div class="ratio"> <span count-to="{{course.ratio}}" value="40" duration="1.5"></span>:1</div>
                     <div class="smallDesc">The ratio of students per faculty member in the {{course.parent_name}} department</div>
                 </div>

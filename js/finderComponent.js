@@ -175,15 +175,17 @@
                 // Gets Faculty List
                 $http.get('http://www.southern.edu/api/people-search/' + $scope.course.parent_name + '/prof_by_area').then(function (e) {
                     $scope.course.staff = e.data;
-                    $scope.courseLoaded = true;
+                    
                 });
 
                 // Gets Careers
-                $http.get('http://www.southern.edu/api/people-search/' + $scope.course.parent_name + '/prof_by_area').then(function (e) {
-                    $scope.course.staff = e.data;
-                    $scope.courseLoaded = true;
+                $http.get('php/careers.php?id=' + data['legacy-id']).then(function (e) {
+                    var data = e.data[0]
+                    data.jobs = Array.from(new Set(data.jobs.split('||')));
+                    $scope.jobs = data
                 });
 
+                $scope.courseLoaded = true;
 
             })
 
