@@ -172,7 +172,13 @@
                     $scope.course.ratio = Math.floor(e.data);
                 });
 
-                // Gets faculty list
+                // Gets Faculty List
+                $http.get('http://www.southern.edu/api/people-search/' + $scope.course.parent_name + '/prof_by_area').then(function (e) {
+                    $scope.course.staff = e.data;
+                    $scope.courseLoaded = true;
+                });
+
+                // Gets Careers
                 $http.get('http://www.southern.edu/api/people-search/' + $scope.course.parent_name + '/prof_by_area').then(function (e) {
                     $scope.course.staff = e.data;
                     $scope.courseLoaded = true;
