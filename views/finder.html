@@ -50,16 +50,21 @@
 
         </div>
 
-        <div layout="row" layout-align="space-between start">
+        <div layout-xs="column" layout-sm="column" layout="row" layout-align="space-between start">
             <div class="container no-margin" layout="column" ng-if="course.courseCheck">
-                <div class="core" ng-repeat="core in course.cores">
-                    <div class="title" ng-if="core.courses.length">{{core.name}}</div>
-                    <div class="courses" ng-repeat="course in core.courses" ng-init="open = false;" ng-click="getCourseInfo(course['legacy-id'], course['catalog-id']);open = !open">
-                        {{course.title}}
-                        <div class="course_desc" ng-if="open">{{preview}}</div>
+                <div class="core" ng-class="{'not-first':!$first && !course.readMore}" ng-repeat="core in course_sequence.semesters">
+                    <div class="title">
+                        {{core.semester}}
+                        <span>{{core.year}}</span>
                     </div>
+                    
+                    <div class="courses" ng-repeat="course in core.courses" ng-init="open = false;">
+                        <span class="course_description">{{course.description}}</span>
+                        <span class="credit">{{course.credit}}</span>
+                    </div>
+                    <div class="readMore" ng-if="!course.readMore" ng-click="course.readMore = true">Read More</div>
                 </div>
-                <div ng-if="course.courseCheck">
+                <div ng-if="course.courseCheck" ng-class="{'not-first': !readMore}">
                     <div class="title">Hours</div>
                     <div class="course_hours" ng-bind-html="course.course_hours"></div>
                 </div>
@@ -69,12 +74,12 @@
 
             <div class="container" flex layout="column" ng-if="course.aboutCheck">
                 <div class="title">About</div>
-                <div class="about" ng-bind-html="course.about"></div>
+                <div class="about" ng-bind-html="course_body"></div>
             </div>
 
 
 
-            <div class="container" layout="column">
+            <div class="container" layout="column" flex="nogrow" style="width: 300px">
                 <div class="title">Faculty</div>
                 <div class="deanHolder" ng-repeat="(key, value) in course.staff track by $index" layout="row" layout-align="space-between center">
                     <div layout="row">

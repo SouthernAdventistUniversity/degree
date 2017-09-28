@@ -107,6 +107,158 @@
             color: #ececec;
             pointer-events: none;
             border: none; }
+      .sm #mainContainer #finder #backdropContainer {
+        background-color: #FBFBFA;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 99;
+        overflow-y: auto; }
+        .sm #mainContainer #finder #backdropContainer #loadingContainer {
+          height: 100%; }
+        .sm #mainContainer #finder #backdropContainer #backdrop {
+          padding: 30px; }
+          .sm #mainContainer #finder #backdropContainer #backdrop .title {
+            font-size: 14px;
+            margin: 25px 0 10px;
+            padding: 15px 0 10px;
+            font-weight: 600;
+            border-top: 1px solid #999999;
+            text-align: left;
+            text-transform: uppercase; }
+            .sm #mainContainer #finder #backdropContainer #backdrop .title span {
+              float: right; }
+          .sm #mainContainer #finder #backdropContainer #backdrop #top {
+            margin-bottom: 90px;
+            padding-top: 23px;
+            border-top: 2px solid #999999; }
+            .sm #mainContainer #finder #backdropContainer #backdrop #top ng-letter-avatar {
+              height: 50px; }
+            .sm #mainContainer #finder #backdropContainer #backdrop #top #name {
+              font-weight: 600;
+              font-size: 36px;
+              margin-left: 24px; }
+            .sm #mainContainer #finder #backdropContainer #backdrop #top .parent_name {
+              font-family: Sorts Mill Goudy;
+              margin-left: 26px;
+              font-size: 20px;
+              color: #999; }
+            .sm #mainContainer #finder #backdropContainer #backdrop #top #close {
+              outline: none;
+              font-size: 30px;
+              padding: 0 25px;
+              cursor: pointer;
+              color: red;
+              height: 18px;
+              line-height: 0.4; }
+          .sm #mainContainer #finder #backdropContainer #backdrop .container {
+            flex: 1 1 auto;
+            width: 100% !important; }
+            .sm #mainContainer #finder #backdropContainer #backdrop .container:first-child {
+              margin-left: 0; }
+            .sm #mainContainer #finder #backdropContainer #backdrop .container .not-first {
+              height: 0;
+              overflow: hidden; }
+            .sm #mainContainer #finder #backdropContainer #backdrop .container .course_hours {
+              width: 300px; }
+              .sm #mainContainer #finder #backdropContainer #backdrop .container .course_hours a {
+                text-decoration: none;
+                cursor: default;
+                color: inherit;
+                pointer-events: none; }
+              .sm #mainContainer #finder #backdropContainer #backdrop .container .course_hours table {
+                width: 100%; }
+                .sm #mainContainer #finder #backdropContainer #backdrop .container .course_hours table tr td {
+                  font-weight: 100;
+                  font-size: 13px;
+                  line-height: 2; }
+                  .sm #mainContainer #finder #backdropContainer #backdrop .container .course_hours table tr td:nth-child(2) {
+                    text-align: right;
+                    width: 50px; }
+                  .sm #mainContainer #finder #backdropContainer #backdrop .container .course_hours table tr td:nth-child(3) {
+                    display: none; }
+            .sm #mainContainer #finder #backdropContainer #backdrop .container .readMore {
+              text-align: center;
+              background: #ececec;
+              padding: 10px;
+              cursor: pointer; }
+            .sm #mainContainer #finder #backdropContainer #backdrop .container .courses {
+              font-size: 16px;
+              font-weight: 300;
+              border-top-width: 0px;
+              border-bottom-width: 0px;
+              min-height: 38px;
+              padding: 0;
+              cursor: pointer;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              display: flex;
+              justify-content: space-between; }
+              .sm #mainContainer #finder #backdropContainer #backdrop .container .courses:before {
+                min-height: auto !important; }
+              .sm #mainContainer #finder #backdropContainer #backdrop .container .courses img {
+                margin-right: 14px; }
+              .sm #mainContainer #finder #backdropContainer #backdrop .container .courses .course_description {
+                width: 250px;
+                box-sizing: border-box;
+                font-size: 13px;
+                white-space: normal;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                margin-bottom: 10px; }
+              .sm #mainContainer #finder #backdropContainer #backdrop .container .courses .credit {
+                font-size: 13px;
+                width: 15px; }
+            .sm #mainContainer #finder #backdropContainer #backdrop .container .about {
+              font-size: 14px;
+              line-height: 27px;
+              font-weight: 300; }
+              .sm #mainContainer #finder #backdropContainer #backdrop .container .about p:first-child {
+                margin-top: 0; }
+              .sm #mainContainer #finder #backdropContainer #backdrop .container .about a {
+                text-decoration: none;
+                cursor: default;
+                color: inherit;
+                pointer-events: none; }
+            .sm #mainContainer #finder #backdropContainer #backdrop .container .deanHolder {
+              font-size: 14px;
+              margin-bottom: 10px; }
+              .sm #mainContainer #finder #backdropContainer #backdrop .container .deanHolder img {
+                height: 40px;
+                margin-right: 16px; }
+              .sm #mainContainer #finder #backdropContainer #backdrop .container .deanHolder #deanName {
+                font-weight: 600; }
+              .sm #mainContainer #finder #backdropContainer #backdrop .container .deanHolder #deanPosition {
+                width: 200px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden; }
+              .sm #mainContainer #finder #backdropContainer #backdrop .container .deanHolder .rating {
+                background: #fed53d;
+                padding: 10px;
+                color: #000;
+                width: 49px;
+                text-align: center;
+                font-weight: bold; }
+            .sm #mainContainer #finder #backdropContainer #backdrop .container .smallDesc {
+              max-width: 300px;
+              font-size: 12px;
+              font-weight: 600;
+              margin: 32px auto 0;
+              text-align: left;
+              color: #999; }
+            .sm #mainContainer #finder #backdropContainer #backdrop .container .ratio {
+              font-size: 116px;
+              font-weight: 100;
+              margin-top: 64px;
+              text-align: center;
+              font-family: Neue Helvetica; }
+            .sm #mainContainer #finder #backdropContainer #backdrop .container #pie {
+              width: 100% !important;
+              height: auto !important; }
     .sm #mainContainer #request {
       background: #ededed;
       width: 100%;

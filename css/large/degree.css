@@ -181,7 +181,10 @@
             padding: 15px 0 10px;
             font-weight: 600;
             border-top: 1px solid #999999;
-            text-align: left; }
+            text-align: left;
+            text-transform: uppercase; }
+            .lg #mainContainer #finder #backdropContainer #backdrop .title span {
+              float: right; }
           .lg #mainContainer #finder #backdropContainer #backdrop #top {
             margin-bottom: 90px;
             padding-top: 23px;
@@ -206,25 +209,36 @@
               height: 18px;
               line-height: 0.4; }
           .lg #mainContainer #finder #backdropContainer #backdrop .container {
-            margin-left: 50px; }
+            margin-left: 50px;
+            flex: 1 1 auto; }
             .lg #mainContainer #finder #backdropContainer #backdrop .container:first-child {
               margin-left: 0; }
-            .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours a {
-              text-decoration: none;
-              cursor: default;
-              color: inherit;
-              pointer-events: none; }
-            .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table {
-              width: 100%; }
-              .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table tr td {
-                font-weight: 100;
-                font-size: 18px;
-                line-height: 2; }
-                .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table tr td:nth-child(2) {
-                  text-align: right;
-                  width: 50px; }
-                .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table tr td:nth-child(3) {
-                  display: none; }
+            .lg #mainContainer #finder #backdropContainer #backdrop .container .not-first {
+              height: 0;
+              overflow: hidden; }
+            .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours {
+              width: 300px; }
+              .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours a {
+                text-decoration: none;
+                cursor: default;
+                color: inherit;
+                pointer-events: none; }
+              .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table {
+                width: 100%; }
+                .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table tr td {
+                  font-weight: 100;
+                  font-size: 13px;
+                  line-height: 2; }
+                  .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table tr td:nth-child(2) {
+                    text-align: right;
+                    width: 50px; }
+                  .lg #mainContainer #finder #backdropContainer #backdrop .container .course_hours table tr td:nth-child(3) {
+                    display: none; }
+            .lg #mainContainer #finder #backdropContainer #backdrop .container .readMore {
+              text-align: center;
+              background: #ececec;
+              padding: 10px;
+              cursor: pointer; }
             .lg #mainContainer #finder #backdropContainer #backdrop .container .courses {
               font-size: 16px;
               font-weight: 300;
@@ -236,22 +250,26 @@
               max-width: 24vw;
               overflow: hidden;
               white-space: nowrap;
-              text-overflow: ellipsis; }
+              text-overflow: ellipsis;
+              display: flex;
+              justify-content: space-between; }
               .lg #mainContainer #finder #backdropContainer #backdrop .container .courses:before {
                 min-height: auto !important; }
               .lg #mainContainer #finder #backdropContainer #backdrop .container .courses img {
                 margin-right: 14px; }
-              .lg #mainContainer #finder #backdropContainer #backdrop .container .courses .course_desc {
-                max-width: 365px;
-                padding: 14px;
+              .lg #mainContainer #finder #backdropContainer #backdrop .container .courses .course_description {
+                width: 250px;
                 box-sizing: border-box;
-                background: #f1f1f1;
                 font-size: 13px;
-                margin: 10px 0 46px;
                 white-space: normal;
-                border: 1px solid #d8d8d8; }
+                text-overflow: ellipsis;
+                overflow: hidden;
+                margin-bottom: 10px; }
+              .lg #mainContainer #finder #backdropContainer #backdrop .container .courses .credit {
+                font-size: 13px;
+                width: 15px; }
             .lg #mainContainer #finder #backdropContainer #backdrop .container .about {
-              font-size: 17px;
+              font-size: 14px;
               line-height: 27px;
               font-weight: 300; }
               .lg #mainContainer #finder #backdropContainer #backdrop .container .about p:first-child {
@@ -270,7 +288,7 @@
               .lg #mainContainer #finder #backdropContainer #backdrop .container .deanHolder #deanName {
                 font-weight: 600; }
               .lg #mainContainer #finder #backdropContainer #backdrop .container .deanHolder #deanPosition {
-                width: 150px;
+                width: 200px;
                 white-space: nowrap;
                 text-overflow: ellipsis;
                 overflow: hidden; }
@@ -295,8 +313,8 @@
               text-align: center;
               font-family: Neue Helvetica; }
             .lg #mainContainer #finder #backdropContainer #backdrop .container #pie {
-              width: 300px;
-              height: 300px; }
+              width: 100% !important;
+              height: auto !important; }
     .lg #mainContainer #request {
       background: #ededed;
       width: 320px;
