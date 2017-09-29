@@ -1,16 +1,14 @@
 <div id="selectContainer" layout="row" layout-align="space-between center">
     <div class="filter" flex="40">
         <span class="label">Program Level</span>
-        <md-select class="md-no-underline" multiple ng-model="user.level" ng-change="user.page = 0" md-selected-text="{{user.level}}"
-            aria-label="Program Level">
+        <md-select class="md-no-underline" multiple ng-model="user.level" ng-change="user.page = 0" md-selected-text="{{user.level}}" aria-label="Program Level">
             <md-option ng-value="'All Programs'">All Programs</md-option>
             <md-option ng-repeat="level in levels">{{level}}</md-option>
         </md-select>
     </div>
     <div class="filter" flex="40">
         <span class="label">Area of Study</span>
-        <md-select class="md-no-underline" multiple ng-model="user.college" ng-change="user.page = 0" md-selected-text="{{user.college}}"
-            aria-label="Program Level">
+        <md-select class="md-no-underline" multiple ng-model="user.college" ng-change="user.page = 0" md-selected-text="{{user.college}}" aria-label="Program Level">
             <md-option ng-value="'All Schools'">All Schools</md-option>
             <md-option ng-repeat="school in schools | orderBy: '+'">{{school}}</md-option>
         </md-select>
@@ -18,8 +16,7 @@
 </div>
 
 <md-list id="degreeList">
-    <md-list-item ng-repeat="degree in filtered = (degrees | filter: degreeFilter) | orderBy: ['school', 'degree'] | limitTo: 10 : user.page * 10"
-        ng-click="getDegreeInfo(degree.id, degree.cat_id)" md-no-proxy layout="row" layout-align="start center" layout-wrap>
+    <md-list-item ng-repeat="degree in filtered = (degrees | filter: degreeFilter) | orderBy: ['school', 'degree'] | limitTo: 10 : user.page * 10" ng-click="getDegreeInfo(degree.id, degree.cat_id)" md-no-proxy layout="row" layout-align="start center" layout-wrap>
         <div layout="column">
             <div id="degree_title">{{degree.degree}}</div>
             <div id="degree_school">{{degree.school}}</div>
@@ -32,8 +29,7 @@
     <div id="emptyFields" ng-if="!filtered.length && !user.level.length">Please select a <b>Program Level</b></div>
     <div id="emptyFields" ng-if="!filtered.length && !user.college.length">Please select an <b>Area of Study</b></div>
     <div class="prev" ng-if="filtered.length" ng-disabled="!user.page" ng-click="user.page = user.page-1">{{$ctrl.size == 'xs' ? '&#10094' : 'Previous'}}</div>
-    <span ng-repeat="i in getArray(filtered.length) | limitTo: 5:(user.page >= maxPages - 5 ? maxPages - 5  : user.page)" ng-click="user.page = i"
-        ng-class="{active:user.page == i, first:$first, last:$last}">{{i+1}}</span>
+    <span ng-repeat="i in getArray(filtered.length) | limitTo: 5:(user.page >= maxPages - 5 ? maxPages - 5  : user.page)" ng-click="user.page = i" ng-class="{active:user.page == i, first:$first, last:$last}">{{i+1}}</span>
     <div class="next" ng-if="filtered.length" ng-disabled="user.page == maxPages-1" ng-click="user.page = user.page+1">{{$ctrl.size == 'xs' ? '&#10095' : 'Next'}}</div>
 </div>
 
@@ -84,7 +80,11 @@
                 <div class="about" ng-bind-html="course_body"></div>
 
                 <div class="title">Related Careers</div>
-                <div class="jobs" ng-repeat="job in jobs.jobs">{{job}}</div>
+                <div class="job-row" ng-repeat="job in jobs">
+
+                    <span class="jobs">{{job.jobs}}</span>
+                    <span class="salary">{{job.salary}}</span>
+                </div>
             </div>
 
 
@@ -95,8 +95,9 @@
                     <div layout="row">
                         <img src="./images/grey_bg.png" ng-src="{{value.PictureLink}}&w=100&h=40" />
                         <div layout="column">
-                            <div id="deanName">{{value.PreferredName}}</div>
+                            <div id="deanName">{{value.PreferredName}}{{value.Credentials ? ',' : ''}} {{value.Credentials}}</div>
                             <div id="deanPosition">{{value.PositionTitle}}</div>
+                            <md-tooltip ng-if="value.Bio" ng-bind-html="value.Bio" md-direction="left"></md-tooltip>
                         </div>
                     </div>
                     <div class="rating" ng-if="value.Rating >= 4">

@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -35,7 +35,7 @@
 
         ////////////////
 
-        $scope.getArray = function (num) {
+        $scope.getArray = function(num) {
             if (num) {
                 var numArray = [];
                 num = Math.ceil(num / 10);
@@ -50,9 +50,9 @@
 
 
 
-        $scope.getCourseInfo = function (id, cat_id) {
+        $scope.getCourseInfo = function(id, cat_id) {
             $scope.preview = "";
-            $http.get('//staging.southern.edu/course_preview?id=' + id + '&catId=' + cat_id).then(function (e) {
+            $http.get('//staging.southern.edu/course_preview?id=' + id + '&catId=' + cat_id).then(function(e) {
                 var data = e.data.split('\n'),
                     hours = data[1],
                     body = data.slice(3, data.length);
@@ -66,7 +66,7 @@
                 n = str1.length,
                 m = str2.length,
                 i, j;
-        
+
             var minimum = function(a, b, c) {
                 var min = a;
                 if (b < min) {
@@ -77,54 +77,54 @@
                 }
                 return min;
             }
-        
+
             if (n == 0) {
                 return;
             }
             if (m == 0) {
                 return;
             }
-        
+
             for (var i = 0; i <= n; i++) {
                 cost[i] = new Array();
             }
-        
+
             for (i = 0; i <= n; i++) {
                 cost[i][0] = i;
             }
-        
+
             for (j = 0; j <= m; j++) {
                 cost[0][j] = j;
             }
-        
+
             for (i = 1; i <= n; i++) {
                 var x = str1.charAt(i - 1);
-        
+
                 for (j = 1; j <= m; j++) {
                     var y = str2.charAt(j - 1);
-        
+
                     if (x == y) {
                         cost[i][j] = cost[i - 1][j - 1];
                     } else {
                         cost[i][j] = 1 + minimum(cost[i - 1][j - 1], cost[i][j - 1], cost[i - 1][j]);
                     }
-        
+
                 } //endfor
-        
+
             } //endfor
-        
+
             return cost[n][m];
         }
 
-        $scope.getDegreeInfo = function (id, cat_id) {
+        $scope.getDegreeInfo = function(id, cat_id) {
             app.hasBackdrop = true;
             $scope.courseLoaded = false;
-            $http.get('//staging.southern.edu/content?id=' + id + '&catId=' + cat_id).then(function (e) {
+            $http.get('//staging.southern.edu/content?id=' + id + '&catId=' + cat_id).then(function(e) {
                 var data = e.data,
                     parent_name = data.parents[0].name,
                     short = [];
 
-            console.log(data)
+                console.log(data)
                 $scope.course.staff = [];
                 $scope.course.name = data.name;
                 $scope.course.parent_name = data.parents[0].name;
@@ -141,7 +141,7 @@
                 for (var course = 0; course < courses.length; course++) {
                     var section = courses[course];
                     var title = section.split('\n')[0]
-                    
+
                     //console.log(data.name.replace(/\s+/g, ' ').trim() + ' | ' + title.replace(/\s+/g, ' ').trim())
                     //console.log(data.name.replace(/\s+/g, ' ').trim() == title.replace(/\s+/g, ' ').trim())
                     //console.log(levenshtein(data.name, title))
@@ -150,9 +150,9 @@
                         console.log(title)
                         console.log(levenshtein(data.name, title))
                         body = section.split('\n')[1]
-                        
+
                         //console.log(body)
-                        
+
                     }
                 }
 
@@ -162,27 +162,32 @@
                 })
 
                 // Gets Course Sequence
-                $http.get('http://www.southern.edu/course-sequences/' + data['legacy-id'] + '.json').then(function (e) {
+                $http.get('http://www.southern.edu/course-sequences/' + data['legacy-id'] + '.json').then(function(e) {
                     $scope.course_sequence = e.data;
                     console.log(e.data)
                 });
 
                 // Gets Faculty to Student Ratio
-                $http.get('http://staging.southern.edu/fts?department=' + $scope.course.parent_name.replace("School of", "").replace("Allied Health", "Biology") + '&term=Fall%202016').then(function (e) {
+                $http.get('http://staging.southern.edu/fts?department=' + $scope.course.parent_name.replace("School of", "").replace("Allied Health", "Biology") + '&term=Fall%202016').then(function(e) {
                     $scope.course.ratio = Math.floor(e.data);
                 });
 
                 // Gets Faculty List
-                $http.get('http://www.southern.edu/api/people-search/' + $scope.course.parent_name + '/prof_by_area').then(function (e) {
+                $http.get('http://www.southern.edu/api/people-search/' + $scope.course.parent_name + '/prof_by_area').then(function(e) {
+                    console.log(Object.keys(e.data));
+                    Object.keys(e.data).forEach(function(faculty) {
+                        e.data[faculty].Bio = decodeHtml(e.data[faculty].Bio);
+                    });
+                    console.log(e.data);
                     $scope.course.staff = e.data;
-                    
+
                 });
 
                 // Gets Careers
-                $http.get('php/careers.php?id=' + data['legacy-id']).then(function (e) {
-                    var data = e.data[0]
-                    data.jobs = Array.from(new Set(data.jobs.split('||')));
-                    $scope.jobs = data
+                $http.get('php/careers.php?id=' + data['legacy-id']).then(function(e) {
+                    $scope.jobs = e.data;
+
+                    console.log(data);
                 });
 
                 $scope.courseLoaded = true;
@@ -194,11 +199,11 @@
 
 
         // Gets school and degree list
-        $http.get('//staging.southern.edu/departments').then(function (e) {
+        $http.get('//staging.southern.edu/departments').then(function(e) {
             var data = e.data,
                 schools = [];
             //console.log(data);
-            data.forEach(function (info) {
+            data.forEach(function(info) {
                 if (schools.indexOf(info.school) === -1)
                     schools.push(info.school);
             })
@@ -206,14 +211,14 @@
             $scope.degrees = data;
         });
 
-        $scope.degreeFilter = function (degrees) {
+        $scope.degreeFilter = function(degrees) {
             try {
                 var check = false
-                $scope.user.level.forEach(function (level) {
+                $scope.user.level.forEach(function(level) {
                     if (degrees.level.indexOf(level) > -1 || level == "All Programs") {
                         if ($scope.user.level.indexOf("All Programs") > 0) $scope.user.level = ["All Programs"];
                         else if (level != "All Programs" && $scope.user.level.indexOf("All Programs") > -1) $scope.user.level.splice($scope.user.level.indexOf("All Programs"), 1);
-                        $scope.user.college.forEach(function (college) {
+                        $scope.user.college.forEach(function(college) {
                             if (degrees.school.indexOf(college) > -1 || college == "All Schools") {
                                 if ($scope.user.college.indexOf("All Schools") > 0) $scope.user.college = ["All Schools"];
                                 else if (college != "All Schools" && $scope.user.college.indexOf("All Schools") > -1) $scope.user.college.splice($scope.user.college.indexOf("All Schools"), 1);
@@ -223,7 +228,7 @@
                     }
                 })
                 return check;
-            } catch (e) { }
+            } catch (e) {}
         }
 
         function removeDiacritics(str) {
@@ -323,7 +328,13 @@
 
         }
 
-        $scope.emptyCourse = function () {
+        function decodeHtml(html) {
+            var txt = document.createElement("textarea");
+            txt.innerHTML = html;
+            return txt.value;
+        }
+
+        $scope.emptyCourse = function() {
             $scope.course = {};
             $scope.course.cores = {};
         }
