@@ -24,7 +24,7 @@
             page: 0
         }
 
-        $scope.levels = ['Non-Degree', 'Certificate', 'Minor', 'Associate', 'Bachelor', 'Master'];
+        $scope.levels = ['Master', 'Bachelor', 'Associate', 'Minor', 'Certificate', 'Non-Degree'];
 
         $scope.course = {};
         $scope.course.cores = {};
@@ -116,10 +116,15 @@
             return cost[n][m];
         }
 
-        $scope.getDegreeInfo = function(id, cat_id) {
+        $scope.getDegreeInfo = function(degree) {
+            console.log(degree);
             app.hasBackdrop = true;
+
             $scope.courseLoaded = false;
-            $http.get('//staging.southern.edu/content?id=' + id + '&catId=' + cat_id).then(function(e) {
+            $scope.course.parent_name = degree.school;
+            $scope.course.name = degree.degree; //standardizeDegreeName(degree.degree);
+
+            /*$http.get('//staging.southern.edu/content?id=' + id + '&catId=' + cat_id).then(function(e) {
                 var data = e.data,
                     parent_name = data.parents[0].name,
                     short = [];
@@ -161,38 +166,40 @@
                     console.log($scope.course_body)
                 })
 
-                // Gets Course Sequence
-                $http.get('http://www.southern.edu/course-sequences/' + data['legacy-id'] + '.json').then(function(e) {
-                    $scope.course_sequence = e.data;
-                    console.log(e.data)
-                });
-
-                // Gets Faculty to Student Ratio
-                $http.get('http://staging.southern.edu/fts?department=' + $scope.course.parent_name.replace("School of", "").replace("Allied Health", "Biology") + '&term=Fall%202016').then(function(e) {
-                    $scope.course.ratio = Math.floor(e.data);
-                });
-
-                // Gets Faculty List
-                $http.get('http://www.southern.edu/api/people-search/' + $scope.course.parent_name + '/prof_by_area').then(function(e) {
-                    console.log(Object.keys(e.data));
-                    Object.keys(e.data).forEach(function(faculty) {
-                        e.data[faculty].Bio = decodeHtml(e.data[faculty].Bio);
-                    });
-                    console.log(e.data);
-                    $scope.course.staff = e.data;
-
-                });
-
-                // Gets Careers
-                $http.get('php/careers.php?id=' + data['legacy-id']).then(function(e) {
-                    $scope.jobs = e.data;
-
-                    console.log(data);
-                });
-
+                
                 $scope.courseLoaded = true;
 
-            })
+            })*/
+
+            // Gets Course Sequence
+            $http.get('http://www.southern.edu/course-sequences/' + degree.id + '.json').then(function(e) {        
+                $scope.course_sequence = e.data;
+                //console.log(e.data)
+            });
+
+            // Gets Faculty to Student Ratio
+            $http.get('http://staging.southern.edu/fts?department=' + $scope.course.parent_name.replace("School of", "").replace("Allied Health", "Biology") + '&term=Fall%202016').then(function(e) {
+                $scope.course.ratio = Math.floor(e.data);
+            });
+
+            // Gets Faculty List
+            $http.get('http://www.southern.edu/api/people-search/' + $scope.course.parent_name + '/prof_by_area').then(function(e) {
+                console.log(Object.keys(e.data));
+                Object.keys(e.data).forEach(function(faculty) {
+                    e.data[faculty].Bio = decodeHtml(e.data[faculty].Bio);
+                });
+                console.log(e.data);
+                $scope.course.staff = e.data;
+
+            });
+
+            // Gets Careers
+            $http.get('php/careers.php?id=' + degree.id).then(function(e) {
+                $scope.jobs = e.data;
+                
+            });
+
+            $scope.courseLoaded = true;
 
         }
 
@@ -206,6 +213,7 @@
             data.forEach(function(info) {
                 if (schools.indexOf(info.school) === -1)
                     schools.push(info.school);
+                info.degree = standardizeDegreeName(info.degree);
             })
             $scope.schools = schools;
             $scope.degrees = data;
@@ -229,6 +237,32 @@
                 })
                 return check;
             } catch (e) {}
+        }
+
+        function standardizeDegreeName(str) {
+            var degreeAbbr = ['A.A.', 'A.S.', 'A.T.', 'B.A.', 'B.B.A.', 'B.F.A.', 'B.Mus', 'B.S.', 'B.S.W.', 'M.A.', 'M.B.A.', 'M.F.M.', 'M.S.W.', 'M.S.', 'M.S.A.', 'M.S.Ed.', 'M.S.N.', 'D.N.P', 'M.S.N./M.B.A.', 'B.S.N.', 'M.S.W./M.B.A.', 'B.T.'];
+            var iAbbr, carryOn, el;
+
+            for (var x = 0; x < degreeAbbr.length; x++) {
+                el        = degreeAbbr[x];                
+                iAbbr  = [new RegExp('^'+el+'\\s+'), new RegExp('^'+el.replace(/\./g, '')+'\\s+'), new RegExp(',\\s+'+el+'$'), new RegExp(',\\s+'+ el.replace(/\./g, '')+'$')];
+                carryOn    = true;
+                
+                for (var i=0; i < iAbbr.length; i++) {                    
+                    if (str.match(iAbbr[i])) {
+                        str = str.replace(new RegExp(iAbbr[i], "i"), '');
+                        str = el.replace(/\./g, '') +' '+ str;
+
+                        carryOn = false;
+                        break;
+                    }
+                }
+
+                if (!carryOn) {
+                    break;
+                }
+            }
+            return str;
         }
 
         function removeDiacritics(str) {

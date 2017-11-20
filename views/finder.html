@@ -16,7 +16,7 @@
 </div>
 
 <md-list id="degreeList">
-    <md-list-item ng-repeat="degree in filtered = (degrees | filter: degreeFilter) | orderBy: ['school', 'degree'] | limitTo: 10 : user.page * 10" ng-click="getDegreeInfo(degree.id, degree.cat_id)" md-no-proxy layout="row" layout-align="start center" layout-wrap>
+    <md-list-item ng-repeat="degree in filtered = (degrees | filter: degreeFilter) | orderBy: ['school', 'degree'] | limitTo: 10 : user.page * 10" ng-click="getDegreeInfo(degree)" md-no-proxy layout="row" layout-align="start center" layout-wrap>
         <div layout="column">
             <div id="degree_title">{{degree.degree}}</div>
             <div id="degree_school">{{degree.school}}</div>
@@ -51,7 +51,7 @@
         </div>
 
         <div layout-xs="column" layout-sm="column" layout="row" layout-align="space-between start">
-            <div class="container no-margin" layout="column" ng-if="course.courseCheck">
+            <div class="container no-margin" layout="column">
                 <div class="title">Course Sequence</div>
                 <div class="core" ng-class="{'not-first':!$first && !course.readMore}" ng-repeat="core in course_sequence.semesters">
 
