@@ -120,9 +120,9 @@
             console.log(degree);
             app.hasBackdrop = true;
 
-            $scope.courseLoaded = false;
+            $scope.courseLoaded       = false;
             $scope.course.parent_name = degree.school;
-            $scope.course.name = degree.degree; //standardizeDegreeName(degree.degree);
+            $scope.course.name        = degree.degree; //standardizeDegreeName(degree.degree);
 
             /*$http.get('//staging.southern.edu/content?id=' + id + '&catId=' + cat_id).then(function(e) {
                 var data = e.data,
@@ -173,8 +173,9 @@
 
             // Gets Course Sequence
             $http.get('http://www.southern.edu/course-sequences/' + degree.id + '.json').then(function(e) {        
-                $scope.course_sequence = e.data;
-                //console.log(e.data)
+                $scope.course_sequence   = e.data;
+                $scope.course_body       = e.data.description;
+                $scope.course.aboutCheck = true;
             });
 
             // Gets Faculty to Student Ratio
@@ -213,6 +214,7 @@
             data.forEach(function(info) {
                 if (schools.indexOf(info.school) === -1)
                     schools.push(info.school);
+                info.degreeRaw = info.degree;
                 info.degree = standardizeDegreeName(info.degree);
             })
             $scope.schools = schools;
@@ -251,7 +253,7 @@
                 for (var i=0; i < iAbbr.length; i++) {                    
                     if (str.match(iAbbr[i])) {
                         str = str.replace(new RegExp(iAbbr[i], "i"), '');
-                        str = el.replace(/\./g, '') +' '+ str;
+                        str = '<em>'+ el.replace(/\./g, '') +'</em> '+ str;
 
                         carryOn = false;
                         break;
@@ -262,6 +264,9 @@
                     break;
                 }
             }
+
+            str = str.replace(/&/g, 'and');
+
             return str;
         }
 

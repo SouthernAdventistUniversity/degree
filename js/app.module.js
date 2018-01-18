@@ -4,7 +4,6 @@
     angular.module('SouthernDegree', [
             'ngMaterial',
             'ngAnimate',
-            'ngLetterAvatar',
             'ngSanitize',
             'chart.js',
             'countTo'

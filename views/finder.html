@@ -1,13 +1,13 @@
 <div id="selectContainer" layout="row" layout-align="space-between center">
     <div class="filter" flex="40">
-        <span class="label">Program Level</span>
+        <label>Program Level</label>
         <md-select class="md-no-underline" multiple ng-model="user.level" ng-change="user.page = 0" md-selected-text="{{user.level}}" aria-label="Program Level">
             <md-option ng-value="'All Programs'">All Programs</md-option>
             <md-option ng-repeat="level in levels">{{level}}</md-option>
         </md-select>
     </div>
     <div class="filter" flex="40">
-        <span class="label">Area of Study</span>
+        <label>Area of Study</label>
         <md-select class="md-no-underline" multiple ng-model="user.college" ng-change="user.page = 0" md-selected-text="{{user.college}}" aria-label="Program Level">
             <md-option ng-value="'All Schools'">All Schools</md-option>
             <md-option ng-repeat="school in schools | orderBy: '+'">{{school}}</md-option>
@@ -15,14 +15,12 @@
     </div>
 </div>
 
-<md-list id="degreeList">
-    <md-list-item ng-repeat="degree in filtered = (degrees | filter: degreeFilter) | orderBy: ['school', 'degree'] | limitTo: 10 : user.page * 10" ng-click="getDegreeInfo(degree)" md-no-proxy layout="row" layout-align="start center" layout-wrap>
-        <div layout="column">
-            <div id="degree_title">{{degree.degree}}</div>
-            <div id="degree_school">{{degree.school}}</div>
-        </div>
-    </md-list-item>
-</md-list>
+<ol id="degree-list">
+    <li ng-repeat="degree in filtered = (degrees | filter: degreeFilter) | orderBy: ['school', 'degree'] | limitTo: 10 : user.page * 10" ng-click="getDegreeInfo(degree)" md-no-proxy layout="row" layout-align="start center" layout-wrap>        
+        <span class="degree-title" ng-bind-html="degree.degree"></span>
+        <span class="degree-school" ng-bind-html="degree.school"></span>
+    </li>
+</ol>
 
 <div id="pages">
     <div id="emptyResults" ng-if="!filtered.length && user.level.length && user.college.length">No results to display.</div>
@@ -40,7 +38,6 @@
     <div id="backdrop" ng-if="courseLoaded" class="animate-fade">
         <div id="top" layout="row" layout-align="space-between center" flex="100">
             <div layout="row">
-                <ng-letter-avatar data="{{course.name}}" charCount="1" dynamic="true" width="50" height="50"></ng-letter-avatar>
                 <div layout="column">
                     <div id="name" flex>{{course.name}}</div>
                     <div class="parent_name">{{course.parent_name}}</div>
